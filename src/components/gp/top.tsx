@@ -143,7 +143,7 @@ export function ProofStrip() {
             ["Delivery area", "delivery area"],
             ["Typical lead time", "typical lead time"],
             ["Minimum order for custom branding", "custom branding MOQ"],
-          ].map(([t, l]) => (
+          ] as const).map(([t, l]) => (
             <div key={t} className="border-b border-border p-5 lg:border-b-0 lg:border-r last:border-r-0">
               <dt className="eyebrow mb-3 text-muted-foreground">{t}</dt>
               <dd><NeedFromGreenpeak label={l} /></dd>
