@@ -101,7 +101,7 @@ export function WhyGreenpeak() {
         <ImageSlot caption="IMAGE: contact photo" alt="Photo of your GreenPeak Transform contact" ratio="aspect-square" className="w-24 shrink-0" />
         <div className="flex-1">
           <p className="eyebrow mb-2 text-muted-foreground">Your contact</p>
-          <NeedFromGreenpeak label="[Name]" />
+          <p className="font-display text-2xl">Mr. Pharunyu L.</p><p className="text-sm text-muted-foreground"><a href="tel:+66994246141" className="hover:underline">+66 99 424 6141</a> · <a href="mailto:Pharunyu.l@gmail.com" className="hover:underline">Pharunyu.l@gmail.com</a></p>
         </div>
         <a
           href={LINE_URL}
@@ -110,7 +110,7 @@ export function WhyGreenpeak() {
           onClick={() => trackEvent("contact_talk_on_line")}
           className="inline-flex items-center justify-center gap-2 rounded-md border border-teak px-5 py-3 text-sm text-teak transition-colors duration-300 hover:bg-teak hover:text-ivory"
         >
-          Talk to [Name] on LINE
+          Talk to Pharunyu on LINE
         </a>
       </div>
     </Section>
