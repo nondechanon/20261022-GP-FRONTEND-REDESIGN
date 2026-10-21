@@ -55,7 +55,7 @@ function Field({ label, error, children, optional }: { label: string; error?: st
   );
 }
 
-function ConsentBox({ reg, error }: { reg: object; error?: string }) {
+function ConsentBox({ reg, error }: { reg: object; error?: string | undefined }) {
   return (
     <div>
       <label className="flex items-start gap-3 text-sm">
