@@ -15,7 +15,7 @@ const hotelSchema = z.object({
   email: z.string().trim().email("Please enter a valid email").max(255),
   phone: z.string().trim().min(6, "Please enter a phone number").max(30),
   rooms: z.string().trim().max(10).optional(),
-  products: z.array(z.string()).default([]),
+  products: z.array(z.string()),
   need: z.enum(["sample", "quotation", "callback"], { errorMap: () => ({ message: "Please choose one" }) }),
   notes: z.string().trim().max(1000).optional(),
   consent,
@@ -27,7 +27,7 @@ const importerSchema = z.object({
   country: z.string().trim().min(2, "Please enter your country").max(80),
   email: z.string().trim().email("Please enter a valid email").max(255),
   phone: z.string().trim().max(30).optional(),
-  categories: z.array(z.string()).default([]),
+  categories: z.array(z.string()),
   volume: z.string().trim().max(100).optional(),
   notes: z.string().trim().max(1000).optional(),
   consent,
@@ -43,7 +43,7 @@ async function submitLead(payload: Record<string, unknown>) {
 
 const inputCls = "w-full rounded-md border border-input bg-card px-3 py-2.5 text-sm";
 
-function Field({ label, error, children, optional }: { label: string; error?: string; children: React.ReactNode; optional?: boolean }) {
+function Field({ label, error, children, optional }: { label: string; error?: string | undefined; children: React.ReactNode; optional?: boolean }) {
   return (
     <label className="block">
       <span className="mb-1.5 block text-sm font-medium">
