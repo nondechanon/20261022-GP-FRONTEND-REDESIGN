@@ -138,7 +138,7 @@ export function ProofStrip() {
       </div>
       {!SHOW_LOGOS && (
         <dl className="grid grid-cols-2 border-t border-border lg:grid-cols-4">
-          {[
+          {([
             ["Kit SKUs available", "number of kit SKUs"],
             ["Delivery area", "delivery area"],
             ["Typical lead time", "typical lead time"],

@@ -213,7 +213,7 @@ export function Faq() {
     ["Which areas do you deliver to?", "delivery area"],
     ["How does custom branding work?", "custom branding details"],
     ["What are your payment terms?", "payment terms"],
-  ];
+  ] as const;
   return (
     <Section className="border-t border-border bg-card" label="FAQ">
       <div className="mx-auto max-w-3xl">
