@@ -1,3 +1,5 @@
+import straws from "@/assets/gp/sustainabletableware.jpg";
+import food from "@/assets/gp/authenticthaifood.jpg";
 import { FileText, ShieldCheck, Recycle, MapPin, Leaf, MessageCircle } from "lucide-react";
 import { CtaButton, ImageSlot, NeedFromGreenpeak, Section, SectionTitle, goToRequest, trackEvent, LINE_URL } from "./shared";
 
@@ -6,7 +8,7 @@ export function Chaona() {
   return (
     <Section id="chaona" className="bg-teak text-ivory" label="CHAONA">
       <div className="grid items-center gap-12 lg:grid-cols-2">
-        <ImageSlot caption="IMAGE: CHAONA rice straw in a cocktail glass" alt="CHAONA rice straw in a cocktail glass" />
+        <ImageSlot src={straws} caption="IMAGE: CHAONA rice straw in a cocktail glass" alt="CHAONA rice straw in a cocktail glass" />
         <div>
           <p className="eyebrow mb-4 text-celadon">Our own brand</p>
           <h2 className="text-5xl md:text-7xl">CHAONA</h2>
@@ -59,8 +61,8 @@ export function Sustainability() {
         Aligned with Thailand's Roadmap on Plastic Waste Management 2018-2030 and Green Hotel procurement criteria.
       </p>
       <div className="mt-8">
-        <CtaButton variant="secondary" track="download_spec_sheets" onClick={() => { /* placeholder link */ }}>
-          Download Spec Sheets
+        <CtaButton variant="secondary" track="download_spec_sheets" onClick={() => window.open("https://drive.google.com/drive/folders/1KUfyS1FaDUBMNDopH8Ld27TAT8iq9jE5?usp=sharing", "_blank", "noopener")}>
+          View Catalog 2026
         </CtaButton>
       </div>
     </Section>
@@ -121,7 +123,7 @@ export function ExportBand() {
   return (
     <Section id="export" className="bg-mist" label="Export">
       <div className="grid items-center gap-10 md:grid-cols-[1fr_1.4fr]">
-        <ImageSlot caption="IMAGE: Thai food and supermarket products" alt="Thai food and supermarket products for export" ratio="aspect-[4/3]" />
+        <ImageSlot src={food} caption="IMAGE: Thai food and supermarket products" alt="Thai food and supermarket products for export" ratio="aspect-[4/3]" />
         <div>
           <p className="eyebrow mb-3 text-muted-foreground">Export</p>
           <h2 className="text-2xl md:text-3xl">Also from GreenPeak: Authentic Thai Food and Supermarket Products for Importers.</h2>
