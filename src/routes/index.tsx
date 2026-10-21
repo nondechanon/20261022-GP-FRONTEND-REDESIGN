@@ -1,24 +1,47 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { Toaster } from "@/components/ui/sonner";
+import { UtilityBar, Header, Hero, ProofStrip, AmenityKits, Slippers, Customization } from "@/components/gp/top";
+import { Chaona, Sustainability, WhyGreenpeak, ExportBand } from "@/components/gp/middle";
+import { RequestForm, Faq, Footer } from "@/components/gp/bottom";
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
+const TITLE = "GreenPeak Transform | Sustainable Guest Amenities for Thai Hotels";
+const DESC =
+  "Eco hotel amenities in Thailand: sustainable amenity kits, slippers and CHAONA rice straws, custom-branded with your logo and supplied from Bangkok.";
+
 export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title: TITLE },
+      { name: "description", content: DESC },
+      { property: "og:title", content: TITLE },
+      { property: "og:description", content: DESC },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+  }),
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
 function Index() {
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
+    <>
+      <UtilityBar />
+      <Header />
+      <main>
+        <Hero />
+        <ProofStrip />
+        <AmenityKits />
+        <Slippers />
+        <Customization />
+        <Chaona />
+        <Sustainability />
+        <WhyGreenpeak />
+        <ExportBand />
+        <RequestForm />
+        <Faq />
+      </main>
+      <Footer />
+      <Toaster />
+    </>
   );
 }
