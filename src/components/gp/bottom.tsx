@@ -244,12 +244,12 @@ export function Footer() {
         <div className="space-y-2 text-sm">
           <p>Bangkok, Thailand</p>
           <NeedFromGreenpeak label="full address" />
-          <p className="pt-2"><a href="mailto:sales@greenpeaktransform.com" className="underline-offset-4 hover:underline">sales@greenpeaktransform.com</a></p>
+          <p className="pt-2"><a href="mailto:Pharunyu.l@gmail.com" className="underline-offset-4 hover:underline">Pharunyu.l@gmail.com</a></p>
         </div>
         <ul className="space-y-2 text-sm">
           <li><a href={LINE_URL} target="_blank" rel="noreferrer" onClick={() => trackEvent("footer_line")} className="hover:underline">LINE</a></li>
           <li><a href="https://www.linkedin.com/" target="_blank" rel="noreferrer" className="hover:underline">LinkedIn</a></li>
-          <li><a href="#" className="hover:underline">GeoAsia</a></li>
+          <li><a href="https://greenpeaktransform.com/partnership/" target="_blank" rel="noreferrer" className="hover:underline">GeoAsia Initiative</a></li>
           <li><a href="#" className="hover:underline">Privacy notice (Thai PDPA)</a></li>
         </ul>
       </div>

@@ -145,4 +145,4 @@ export function SectionTitle({ eyebrow, title, className }: { eyebrow?: string; 
 }
 
 export const LINE_URL = "https://line.me/R/ti/p/@greenpeak-placeholder";
-export const WHATSAPP_URL = "https://wa.me/66000000000";
+export const WHATSAPP_URL = "https://wa.me/66994246141";

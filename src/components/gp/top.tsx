@@ -1,3 +1,5 @@
+import hero from "@/assets/gp/hero.jpg";
+import amenities from "@/assets/gp/ecoamenities.jpg";
 import { useState } from "react";
 import { Menu, X, MessageCircle, Phone } from "lucide-react";
 import {
@@ -99,6 +101,7 @@ export function Hero() {
   return (
     <section id="top" className="relative min-h-[88vh] w-full overflow-hidden" aria-label="Introduction">
       <ImageSlot
+        src={hero}
         caption="IMAGE: GreenPeak kit + slippers in a Thai hotel bathroom (full-bleed)"
         alt="GreenPeak Transform amenity kit and slippers in a Thai hotel bathroom"
         ratio=""
@@ -227,7 +230,7 @@ export function Customization() {
             </CtaButton>
           </div>
         </div>
-        <ImageSlot caption="IMAGE: mock-up of a co-branded kit" alt="Mock-up of a co-branded GreenPeak Transform amenity kit" />
+        <ImageSlot src={amenities} caption="IMAGE: mock-up of a co-branded kit" alt="Mock-up of a co-branded GreenPeak Transform amenity kit" />
       </div>
     </Section>
   );
