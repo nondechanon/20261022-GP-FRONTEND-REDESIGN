@@ -121,12 +121,12 @@ export function AmenityKits() {
       <SectionTitle eyebrow="For guest rooms" title="Amenity Kits" />
       <div className="grid grid-cols-2 gap-3 sm:gap-6 lg:grid-cols-4">
         {kits.map((k) => (
-          <article key={k} className="flex flex-col rounded-md border border-border bg-card p-3 transition-colors duration-300 hover:border-charcoal">
+          <article key={k} className="flex flex-col rounded-md border border-border bg-card p-2 sm:p-3 transition-colors duration-300 hover:border-charcoal">
             <ImageSlot caption={`IMAGE: ${k} kit`} alt={`GreenPeak Transform ${k.toLowerCase()} kit`} />
-            <div className="flex flex-1 flex-col gap-3 p-2 pt-5">
-              <h3 className="text-2xl">{k} Kit</h3>
-              <p className="text-sm"><span className="text-muted-foreground">Materials: </span><NeedFromGreenpeak label={`${k.toLowerCase()} kit materials`} /></p>
-              <p className="text-sm"><span className="text-muted-foreground">Pack format: </span><NeedFromGreenpeak label={`${k.toLowerCase()} kit pack format`} /></p>
+            <div className="flex flex-1 flex-col gap-2 p-1 pt-3 sm:p-2 sm:pt-5">
+              <h3 className="text-lg sm:text-2xl">{k} Kit</h3>
+              <p className="text-xs sm:text-sm"><span className="text-muted-foreground">Materials: </span><NeedFromGreenpeak label={`${k.toLowerCase()} kit materials`} /></p>
+              <p className="text-xs sm:text-sm"><span className="text-muted-foreground">Pack format: </span><NeedFromGreenpeak label={`${k.toLowerCase()} kit pack format`} /></p>
               <div className="mt-auto pt-2">
                 <CtaButton variant="quiet" track={`kit_quotation_${k.toLowerCase()}`} onClick={() => goToRequest({ mode: "hotel", need: "quotation", product: "amenity" })}>
                   Get a Quotation
@@ -151,12 +151,12 @@ export function Slippers() {
       <SectionTitle eyebrow="For guest rooms" title="Slippers" />
       <div className="grid grid-cols-2 gap-3 sm:gap-6 md:grid-cols-3">
         {[1, 2, 3].map((n) => (
-          <article key={n} className="rounded-md border border-border bg-card p-3 transition-colors duration-300 hover:border-charcoal">
+          <article key={n} className="rounded-md border border-border bg-card p-2 sm:p-3 transition-colors duration-300 hover:border-charcoal">
             <ImageSlot caption={`IMAGE: Slipper style ${n}`} alt={`GreenPeak Transform slipper style ${n}`} />
-            <div className="space-y-3 p-2 pt-5">
-              <h3 className="text-2xl">Slipper style {n}</h3>
+            <div className="space-y-2 p-1 pt-3 sm:p-2 sm:pt-5">
+              <h3 className="text-lg sm:text-2xl">Slipper style {n}</h3>
               <NeedFromGreenpeak label="sole / upper material" />
-              <p className="text-sm text-muted-foreground">Logo: embroidery or printing</p>
+              <p className="text-xs sm:text-sm text-muted-foreground">Logo: embroidery or printing</p>
             </div>
           </article>
         ))}
