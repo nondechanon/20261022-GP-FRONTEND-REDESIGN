@@ -15,10 +15,10 @@ import {
 } from "./shared";
 
 const NAV = [
-  { label: "Amenities", href: "#amenities" },
+  { label: "Amenity", href: "#amenities" },
   { label: "CHAONA", href: "#chaona" },
   { label: "Sustainability", href: "#sustainability" },
-  { label: "About", href: "#about" },
+  { label: "About\n", href: "#about" },
 ];
 
 export function UtilityBar() {
