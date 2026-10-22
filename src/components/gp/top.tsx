@@ -115,20 +115,46 @@ export function Hero() {
 }
 
 export function AmenityKits() {
-  const kits = ["Bathroom", "Vanity", "Dental", "Shaving"];
+  const packaging = "Kraft, sugarcane, stone-paper or paper sachet, or paper / kraft box.";
+  const kits = [
+    {
+      name: "Bath & Hair",
+      slug: "bath-hair",
+      specLabel: "Contents",
+      spec: "Cornstarch-based shower cap, natural fiber or cotton loofah, bamboo / wood or cornstarch-based comb.",
+    },
+    {
+      name: "Vanity",
+      slug: "vanity",
+      specLabel: "Contents",
+      spec: "Wood cotton buds (4 pcs), cotton pads (3 pcs), nail file, sewing kit (6 threads, 2 buttons, needle, pin).",
+    },
+    {
+      name: "Dental",
+      slug: "dental",
+      specLabel: "Materials",
+      spec: "Bamboo or cornstarch-based handle, soft bristles. Approx. 17.5–18 cm. Custom handle and bristle colors.",
+    },
+    {
+      name: "Shaving",
+      slug: "shaving",
+      specLabel: "Materials",
+      spec: "Wood handle or cornstarch-based handle. Choice of 3 cover styles; custom colors.",
+    },
+  ];
   return (
     <Section id="amenities" label="Amenity Kits">
       <SectionTitle eyebrow="For guest rooms" title="Amenity Kits" />
       <div className="grid grid-cols-2 gap-3 sm:gap-6 lg:grid-cols-4">
         {kits.map((k) => (
-          <article key={k} className="flex flex-col rounded-md border border-border bg-card p-2 sm:p-3 transition-colors duration-300 hover:border-charcoal">
-            <ImageSlot caption={`IMAGE: ${k} kit`} alt={`GreenPeak Transform ${k.toLowerCase()} kit`} />
+          <article key={k.slug} className="flex flex-col rounded-md border border-border bg-card p-2 sm:p-3 transition-colors duration-300 hover:border-charcoal">
+            <ImageSlot caption={`IMAGE: ${k.name} kit`} alt={`GreenPeak Transform ${k.name.toLowerCase()} kit`} />
             <div className="flex flex-1 flex-col gap-2 p-1 pt-3 sm:p-2 sm:pt-5">
-              <h3 className="text-lg sm:text-2xl">{k} Kit</h3>
-              <p className="text-xs sm:text-sm"><span className="text-muted-foreground">Materials: </span><NeedFromGreenpeak label={`${k.toLowerCase()} kit materials`} /></p>
-              <p className="text-xs sm:text-sm"><span className="text-muted-foreground">Pack format: </span><NeedFromGreenpeak label={`${k.toLowerCase()} kit pack format`} /></p>
+              <h3 className="text-lg sm:text-2xl">{k.name} Kit</h3>
+              <p className="text-xs sm:text-sm"><span className="text-muted-foreground">{k.specLabel}: </span>{k.spec}</p>
+              <p className="text-xs sm:text-sm"><span className="text-muted-foreground">Packaging: </span>{packaging}</p>
               <div className="mt-auto pt-2">
-                <CtaButton variant="quiet" track={`kit_quotation_${k.toLowerCase()}`} onClick={() => goToRequest({ mode: "hotel", need: "quotation", product: "amenity" })}>
+                <CtaButton variant="quiet" track={`kit_quotation_${k.slug}`} onClick={() => goToRequest({ mode: "hotel", need: "quotation", product: "amenity" })}>
                   Get a Quotation
                 </CtaButton>
               </div>
@@ -136,6 +162,9 @@ export function AmenityKits() {
           </article>
         ))}
       </div>
+      <p className="mt-8 max-w-3xl text-xs text-muted-foreground sm:text-sm">
+        All items can be custom-branded with your logo: full-color printing, foil stamping, spot UV, gloss or matt finish. Standard plastic options also available.
+      </p>
       <div className="mt-10">
         <CtaButton variant="secondary" track="view_amenities_catalog" onClick={() => window.open("https://drive.google.com/file/d/1z3HqGJmn3R5_JX8LVh-FIPOw_mrSdHRU/view?usp=sharing", "_blank", "noopener,noreferrer")}>
           View Amenities Catalog
