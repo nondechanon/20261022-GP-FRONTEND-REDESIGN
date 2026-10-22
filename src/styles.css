@@ -95,7 +95,7 @@
 }
 
 @utility eyebrow {
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   font-weight: 500;
@@ -105,8 +105,13 @@
   width: 100%;
   max-width: 1200px;
   margin-inline: auto;
-  padding-inline: 1rem;
-  @media (min-width: 768px) { padding-inline: 2rem; }
+  /* Mobile-first gutter; env() keeps content clear of notches in landscape (needs viewport-fit=cover). */
+  padding-left: max(1rem, env(safe-area-inset-left, 0px));
+  padding-right: max(1rem, env(safe-area-inset-right, 0px));
+  @media (min-width: 768px) {
+    padding-left: max(2rem, env(safe-area-inset-left, 0px));
+    padding-right: max(2rem, env(safe-area-inset-right, 0px));
+  }
 }
 
 @utility hero-scrim {
