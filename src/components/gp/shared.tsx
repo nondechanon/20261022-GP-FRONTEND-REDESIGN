@@ -7,9 +7,9 @@ export function trackEvent(name: string) {
 }
 
 export type Prefill = {
-  mode?: "hotel" | "importer";
-  need?: "sample" | "quotation" | "callback";
-  product?: "amenity" | "slippers" | "chaona" | "export";
+  mode?: "hotel";
+  need?: "quotation" | "callback";
+  product?: "amenity" | "slippers" | "chaona";
 };
 
 /** Scroll to the request form (S11) and preselect fields. */

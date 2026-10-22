@@ -1,7 +1,6 @@
 import straws from "@/assets/gp/sustainabletableware.jpg";
-import food from "@/assets/gp/authenticthaifood.jpg";
 import { FileText, ShieldCheck, Recycle, MapPin, Leaf, MessageCircle } from "lucide-react";
-import { CtaButton, ImageSlot, NeedFromGreenpeak, Section, SectionTitle, goToRequest, trackEvent, LINE_URL } from "./shared";
+import { ImageSlot, NeedFromGreenpeak, Section, SectionTitle, trackEvent, LINE_URL } from "./shared";
 
 export function Chaona() {
   const specs = ["Made from Thai rice", "Biodegradable (claim needs test report)", "Edible", "Supports Thai farmers"];
@@ -23,9 +22,6 @@ export function Chaona() {
             <NeedFromGreenpeak label="rice / farmer impact figure" />
           </div>
           <div className="mt-10 flex flex-col items-start gap-4">
-            <CtaButton track="chaona_request_samples" onClick={() => goToRequest({ mode: "hotel", need: "sample", product: "chaona" })}>
-              Request CHAONA Samples
-            </CtaButton>
             {/* Enable only after chaonaricestraw.com is upgraded. */}
             <span aria-disabled="true" className="cursor-not-allowed text-sm text-ivory/60 underline underline-offset-4">Visit CHAONA</span>
           </div>
@@ -60,11 +56,7 @@ export function Sustainability() {
       <p className="mt-10 max-w-2xl border-t border-border pt-6 text-sm">
         Aligned with Thailand's Roadmap on Plastic Waste Management 2018-2030 and Green Hotel procurement criteria.
       </p>
-      <div className="mt-8">
-        <CtaButton variant="secondary" track="download_spec_sheets" onClick={() => window.open("https://drive.google.com/drive/folders/1KUfyS1FaDUBMNDopH8Ld27TAT8iq9jE5?usp=sharing", "_blank", "noopener")}>
-          View Catalog 2026
-        </CtaButton>
-      </div>
+
     </Section>
   );
 }
@@ -78,19 +70,8 @@ export function WhyGreenpeak() {
   return (
     <Section id="about" className="border-t border-border bg-card" label="Why GreenPeak">
       <SectionTitle eyebrow="About" title="Why GreenPeak Transform" />
-      <div className="grid gap-12 lg:grid-cols-2">
-        <figure className="grid grid-cols-[120px_1fr] gap-6 md:grid-cols-[160px_1fr]">
-          <ImageSlot caption="IMAGE: founder portrait" alt="Portrait of the GreenPeak Transform founder" />
-          <div>
-            <blockquote className="font-display text-2xl leading-snug">
-              <span aria-hidden>&ldquo;</span>
-              <NeedFromGreenpeak label="founder quote, one or two sentences" />
-              <span aria-hidden>&rdquo;</span>
-            </blockquote>
-            <figcaption className="mt-4 text-sm text-muted-foreground">[Name], [Title]</figcaption>
-          </div>
-        </figure>
-        <ul className="grid gap-4">
+      <div className="grid gap-12">
+        <ul className="grid gap-4 lg:grid-cols-3">
           {diffs.map(({ icon: Icon, title }) => (
             <li key={title} className="flex items-start gap-4 rounded-md border border-border bg-background p-5">
               <Icon className="mt-1 h-5 w-5 shrink-0 text-teak" strokeWidth={1.25} />
@@ -114,34 +95,6 @@ export function WhyGreenpeak() {
         >
           Talk to Pharunyu on LINE
         </a>
-      </div>
-    </Section>
-  );
-}
-
-export function ExportBand() {
-  return (
-    <Section id="export" className="bg-mist" label="Export">
-      <div className="grid items-center gap-10 md:grid-cols-[1fr_1.4fr]">
-        <ImageSlot src={food} caption="IMAGE: Thai food and supermarket products" alt="Thai food and supermarket products for export" ratio="aspect-[4/3]" />
-        <div>
-          <p className="eyebrow mb-3 text-muted-foreground">Export</p>
-          <h2 className="text-2xl md:text-3xl">Also from GreenPeak: Authentic Thai Food and Supermarket Products for Importers.</h2>
-          <ul className="mt-6 space-y-2 text-sm">
-            <li className="border-b border-slot pb-2">Frozen Thai food</li>
-            <li className="border-b border-slot pb-2">Curry pastes and ingredients</li>
-            <li className="border-b border-slot pb-2">Dehydrated fruit and noodles</li>
-          </ul>
-          <div className="mt-5 flex flex-col items-start gap-2">
-            <NeedFromGreenpeak label="supplier HACCP/GMP/Halal certificates (label as supplying factory's)" />
-            <NeedFromGreenpeak label="markets served" />
-          </div>
-          <div className="mt-8">
-            <CtaButton variant="outline-dark" track="export_price_list" onClick={() => goToRequest({ mode: "importer" })}>
-              Request Export Price List
-            </CtaButton>
-          </div>
-        </div>
       </div>
     </Section>
   );
