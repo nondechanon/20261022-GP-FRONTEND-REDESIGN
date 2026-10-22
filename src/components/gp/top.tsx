@@ -94,14 +94,14 @@ export function Hero() {
       <ImageSlot
         priority
         src={hero}
-        caption="IMAGE: GreenPeak kit + slippers in a Thai hotel bathroom (full-bleed)"
-        alt="GreenPeak Transform amenity kit and slippers in a Thai hotel bathroom"
+        caption="IMAGE: hotel pool terrace (full-bleed)"
+        alt="Hotel pool terrace with green and white scalloped umbrellas and loungers"
         ratio=""
         className="absolute inset-0 h-full rounded-none"
       />
       <div className="hero-scrim absolute inset-0" />
       <div className="container-gp relative flex min-h-[88svh] flex-col justify-end pb-16 pt-24 md:pb-24">
-        <div className="max-w-3xl text-ivory">
+        <div className="max-w-3xl text-ivory [text-shadow:0_1px_14px_oklch(0.15_0.02_160/0.45)]">
           <h1 className="text-4xl leading-[1.08] md:text-7xl">Sustainable guest amenities for Thailand's finest hotels.</h1>
           <p className="mt-6 max-w-xl text-base md:text-lg">
             Eco amenity kits, slippers and our own CHAONA rice straws, custom-branded with your logo and supplied from Bangkok.

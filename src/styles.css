@@ -114,8 +114,16 @@
   }
 }
 
+/* Hero text sits bottom-left, so the shade is strongest there and fades out toward the top and right.
+   Photo stays visible everywhere else (no full blackout). Teak-tinted to match the palette.
+   Below lg: text spans most of the width, so the shade is a taller bottom gradient instead of a left fade. */
 @utility hero-scrim {
-  background: linear-gradient(180deg, oklch(0.2 0.02 160 / 0.2) 0%, oklch(0.18 0.02 160 / 0.75) 100%);
+  background: linear-gradient(to top, oklch(0.2 0.03 160 / 0.8) 0%, oklch(0.2 0.03 160 / 0.65) 35%, oklch(0.2 0.03 160 / 0.35) 55%, oklch(0.2 0.03 160 / 0.08) 72%, transparent 85%);
+  @media (min-width: 1024px) {
+    background:
+      linear-gradient(to top, oklch(0.2 0.03 160 / 0.72) 0%, oklch(0.2 0.03 160 / 0.5) 30%, oklch(0.2 0.03 160 / 0.12) 60%, transparent 80%),
+      linear-gradient(to right, oklch(0.2 0.03 160 / 0.4) 0%, oklch(0.2 0.03 160 / 0.15) 45%, transparent 75%);
+  }
 }
 
 @utility reveal {
