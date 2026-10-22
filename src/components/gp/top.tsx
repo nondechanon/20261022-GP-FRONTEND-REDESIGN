@@ -5,7 +5,6 @@ import { Menu, X, MessageCircle, Phone } from "lucide-react";
 import {
   CtaButton,
   ImageSlot,
-  NeedFromGreenpeak,
   Section,
   SectionTitle,
   goToRequest,
@@ -175,21 +174,62 @@ export function AmenityKits() {
 }
 
 export function Slippers() {
+  // Spec data source: Greenpeak_Slipper_Catalog.pdf (model codes in parentheses).
+  const packaging = "Kraft paper band or clear plastic bag.";
+  const slippers = [
+    {
+      name: "Ultrasonic Non-woven",
+      slug: "ultrasonic-non-woven",
+      models: "SU01, SU02",
+      upper: "Lightweight non-woven with durable ultrasonic seams.",
+      sole: "Wave pattern sole (white, SU01) or anti-slip dot sole (black, SU02).",
+    },
+    {
+      name: "Non-woven",
+      slug: "non-woven",
+      models: "S01",
+      upper: "Lightweight, hygienic and disposable non-woven.",
+      sole: "4 mm non-skid EVA sole.",
+    },
+    {
+      name: "Nap Cloth",
+      slug: "nap-cloth",
+      models: "SN01",
+      upper: "Comfortable nap cloth with a 3 mm soft sponge heel.",
+      sole: "4 mm non-skid EVA sole.",
+    },
+    {
+      name: "Terry",
+      slug: "terry",
+      models: "ST01, ST02",
+      upper: "Plush terry cloth, classic spa feel.",
+      sole: "Single sole with 3 mm EVA (ST01) or double sole with 3 mm EVA and 4 mm padded footbed (ST02).",
+    },
+  ];
   return (
-    <Section className="border-t border-border" label="Slippers">
+    <Section id="slippers" className="border-t border-border" label="Slippers">
       <SectionTitle eyebrow="For guest rooms" title="Slippers" />
-      <div className="grid grid-cols-2 gap-3 sm:gap-6 md:grid-cols-3">
-        {[1, 2, 3].map((n) => (
-          <article key={n} className="rounded-md border border-border bg-card p-2 sm:p-3 transition-colors duration-300 hover:border-charcoal">
-            <ImageSlot caption={`IMAGE: Slipper style ${n}`} alt={`GreenPeak Transform slipper style ${n}`} />
-            <div className="space-y-2 p-1 pt-3 sm:p-2 sm:pt-5">
-              <h3 className="text-lg sm:text-2xl">Slipper style {n}</h3>
-              <NeedFromGreenpeak label="sole / upper material" />
-              <p className="text-xs sm:text-sm text-muted-foreground">Logo: embroidery or printing</p>
+      <div className="grid grid-cols-2 gap-3 sm:gap-6 lg:grid-cols-4">
+        {slippers.map((s) => (
+          <article key={s.slug} className="flex flex-col rounded-md border border-border bg-card p-2 sm:p-3 transition-colors duration-300 hover:border-charcoal">
+            <ImageSlot caption={`IMAGE: ${s.name} slipper`} alt={`GreenPeak Transform ${s.name.toLowerCase()} slipper`} />
+            <div className="flex flex-1 flex-col gap-2 p-1 pt-3 sm:p-2 sm:pt-5">
+              <h3 className="text-lg sm:text-2xl">{s.name} Slipper</h3>
+              <p className="text-xs sm:text-sm"><span className="text-muted-foreground">Upper: </span>{s.upper}</p>
+              <p className="text-xs sm:text-sm"><span className="text-muted-foreground">Sole: </span>{s.sole}</p>
+              <p className="text-xs sm:text-sm"><span className="text-muted-foreground">Packaging: </span>{packaging}</p>
+              <div className="mt-auto pt-2">
+                <CtaButton variant="quiet" track={`slipper_quotation_${s.slug}`} onClick={() => goToRequest({ mode: "hotel", need: "quotation", product: "slippers" })}>
+                  Get a Quotation
+                </CtaButton>
+              </div>
             </div>
           </article>
         ))}
       </div>
+      <p className="mt-8 max-w-3xl text-xs text-muted-foreground sm:text-sm">
+        All slippers are made to order: black, white or custom colors, with your logo by screen print or embroidery. Open-toe style available.
+      </p>
       <div className="mt-10">
         <CtaButton variant="secondary" track="view_slipper_catalog" onClick={() => window.open("https://drive.google.com/file/d/1-cNsGqdac7Sq9TT7dLEA_cG43ZcdMwjV/view?usp=sharing", "_blank", "noopener,noreferrer")}>
           View Slipper Catalog
