@@ -145,11 +145,12 @@ export function Section({
   );
 }
 
-export function SectionTitle({ eyebrow, title, className }: { eyebrow?: string; title: string; className?: string }) {
+export function SectionTitle({ eyebrow, title, subline, className }: { eyebrow?: string; title: string; subline?: string; className?: string }) {
   return (
     <div className={cn("mb-10 md:mb-14", className)}>
       {eyebrow && <p className="eyebrow mb-3 text-muted-foreground">{eyebrow}</p>}
       <h2 className="text-3xl md:text-5xl">{title}</h2>
+      {subline && <p className="mt-4 max-w-xl text-base text-muted-foreground md:text-lg">{subline}</p>}
     </div>
   );
 }

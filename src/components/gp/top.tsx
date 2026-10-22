@@ -237,17 +237,41 @@ export function Slippers() {
 }
 
 export function Customization() {
-  const steps = ["Brief", "Material & design mock-up", "Sample approval", "Delivery"];
+  const steps = [
+    {
+      title: "Choose your products",
+      body: "Select from a range of toothbrushes, combs, razors, vanity items and bath accessories, available in bamboo, wood and cornstarch-based materials.",
+    },
+    {
+      title: "Submit your logo & select packaging",
+      body: "Provide your logo and choose your preferred sachet or box packaging. Premium finishes, including soy ink printing, full-color printing, foil stamping and spot UV, are available. Custom product colors can also be requested.",
+    },
+    {
+      title: "Approve your mock\u2011up & sample", // non-breaking hyphen keeps "mock-up" on one line,
+      body: "A design mock-up of your branded products is prepared for your review. Production begins only after the mock-up and sample have been approved.",
+    },
+    {
+      title: "Production & delivery",
+      body: "Once approved, your order is manufactured and delivered.",
+    },
+  ];
   return (
     <Section className="bg-card" label="Customization">
       <div className="grid items-center gap-12 lg:grid-cols-[1.3fr_1fr]">
         <div>
-          <SectionTitle eyebrow="Customization" title="Your logo, your story" />
-          <ol className="grid gap-0 border-t border-border md:grid-cols-4 md:border-t-0">
+          <SectionTitle
+            eyebrow="Customization"
+            title="Product Customization"
+            subline="Present your hotel's brand on every amenity in four simple steps."
+          />
+          <ol className="grid gap-0 border-t border-border md:grid-cols-4 md:border-t-0 lg:grid-cols-2 xl:grid-cols-4">
             {steps.map((s, i) => (
-              <li key={s} className="flex gap-4 border-b border-border py-5 md:flex-col md:gap-3 md:border-b-0 md:border-t md:pr-4">
+              <li key={s.title} className="flex gap-4 border-b border-border py-5 md:flex-col md:gap-3 md:border-b-0 md:border-t md:pr-4">
                 <span className="font-display text-3xl text-teak">{i + 1}</span>
-                <span className="text-sm font-medium">{s}</span>
+                <div className="flex flex-col gap-2">
+                  <span className="text-sm font-medium">{s.title}</span>
+                  <p className="text-sm leading-relaxed text-muted-foreground md:text-xs lg:text-sm xl:text-xs">{s.body}</p>
+                </div>
               </li>
             ))}
           </ol>
