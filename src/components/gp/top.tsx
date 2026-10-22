@@ -118,18 +118,7 @@ export function Hero() {
 export function AmenityKits() {
   const packaging = "Kraft, sugarcane, stone-paper or paper sachet, or paper / kraft box.";
   const kits = [
-    {
-      name: "Bath & Hair",
-      slug: "bath-hair",
-      specLabel: "Contents",
-      spec: "Cornstarch-based shower cap, natural fiber or cotton loofah, bamboo / wood or cornstarch-based comb.",
-    },
-    {
-      name: "Vanity",
-      slug: "vanity",
-      specLabel: "Contents",
-      spec: "Wood cotton buds (4 pcs), cotton pads (3 pcs), nail file, sewing kit (6 threads, 2 buttons, needle, pin).",
-    },
+    // Display order, left to right: Dental, Shaving, Vanity, Bath & Hair.
     {
       name: "Dental",
       slug: "dental",
@@ -141,6 +130,18 @@ export function AmenityKits() {
       slug: "shaving",
       specLabel: "Materials",
       spec: "Wood handle or cornstarch-based handle. Choice of 3 cover styles; custom colors.",
+    },
+    {
+      name: "Vanity",
+      slug: "vanity",
+      specLabel: "Contents",
+      spec: "Wood cotton buds (4 pcs), cotton pads (3 pcs), nail file, sewing kit (6 threads, 2 buttons, needle, pin).",
+    },
+    {
+      name: "Bath & Hair",
+      slug: "bath-hair",
+      specLabel: "Contents",
+      spec: "Cornstarch-based shower cap, natural fiber or cotton loofah, bamboo / wood or cornstarch-based comb.",
     },
   ];
   return (
