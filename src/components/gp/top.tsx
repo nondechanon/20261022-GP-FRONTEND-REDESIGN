@@ -22,9 +22,10 @@ const NAV = [
 
 export function UtilityBar() {
   return (
-    <div className="bg-charcoal text-ivory">
+    // Mobile-first: below lg (phones and tablets) LINE / WhatsApp live in the sticky bottom bar, so this strip is lg+ only.
+    <div className="hidden bg-charcoal text-ivory lg:block">
       <div className="container-gp flex items-center justify-between gap-4 py-2 text-xs">
-        <p className="hidden md:block">Now quoting 2027 amenity programs for Thai hotels</p>
+        <p>Now quoting 2027 amenity programs for Thai hotels</p>
         <div className="flex gap-4">
           <a href={LINE_URL} target="_blank" rel="noreferrer" onClick={() => trackEvent("utility_line")} className="hover:underline">LINE</a>
           <span aria-hidden>/</span>
@@ -42,7 +43,7 @@ export function Header() {
     <>
       <header className="sticky top-0 z-40 border-b border-border bg-ivory">
         <div className="container-gp flex h-16 items-center justify-between gap-4 md:h-20">
-          <a href="#top" className="font-display text-xl tracking-tight text-teak md:text-2xl">GreenPeak Transform</a>
+          <a href="#top" className="inline-flex min-h-11 items-center font-display text-xl tracking-tight text-teak md:text-2xl">GreenPeak Transform</a>
           <nav aria-label="Main" className="hidden lg:block">
             <ul className="flex gap-8 text-sm">
               {NAV.map((n) => (
@@ -56,7 +57,7 @@ export function Header() {
               aria-label={open ? "Close menu" : "Open menu"}
               aria-expanded={open}
               onClick={() => setOpen(!open)}
-              className="rounded-md p-2 lg:hidden"
+              className="-mr-2.5 inline-flex h-11 w-11 items-center justify-center rounded-md lg:hidden"
             >
               {open ? <X className="h-5 w-5" strokeWidth={1.5} /> : <Menu className="h-5 w-5" strokeWidth={1.5} />}
             </button>
@@ -75,11 +76,11 @@ export function Header() {
         )}
       </header>
       {/* Mobile-only sticky bottom bar */}
-      <div className="fixed inset-x-0 bottom-0 z-40 flex justify-center gap-2 border-t border-border bg-ivory p-2 md:hidden">
-        <a href={LINE_URL} target="_blank" rel="noreferrer" onClick={() => trackEvent("mobilebar_line")} aria-label="Chat on LINE" className="inline-flex items-center gap-1 rounded-md border border-teak px-3 text-sm text-teak">
+      <div className="fixed inset-x-0 bottom-0 z-40 flex gap-2 border-t border-border bg-ivory p-2 pb-[max(0.5rem,env(safe-area-inset-bottom,0px))] pl-[max(0.5rem,env(safe-area-inset-left,0px))] pr-[max(0.5rem,env(safe-area-inset-right,0px))] lg:hidden">
+        <a href={LINE_URL} target="_blank" rel="noreferrer" onClick={() => trackEvent("mobilebar_line")} aria-label="Chat on LINE" className="inline-flex min-h-11 flex-1 items-center justify-center gap-2 rounded-md border border-teak px-3 text-sm text-teak">
           <MessageCircle className="h-4 w-4" strokeWidth={1.5} /> LINE
         </a>
-        <a href={WHATSAPP_URL} target="_blank" rel="noreferrer" onClick={() => trackEvent("mobilebar_whatsapp")} aria-label="Chat on WhatsApp" className="inline-flex items-center gap-1 rounded-md border border-teak px-3 text-sm text-teak">
+        <a href={WHATSAPP_URL} target="_blank" rel="noreferrer" onClick={() => trackEvent("mobilebar_whatsapp")} aria-label="Chat on WhatsApp" className="inline-flex min-h-11 flex-1 items-center justify-center gap-2 rounded-md border border-teak px-3 text-sm text-teak">
           <Phone className="h-4 w-4" strokeWidth={1.5} /> WhatsApp
         </a>
       </div>
@@ -89,8 +90,9 @@ export function Header() {
 
 export function Hero() {
   return (
-    <section id="top" className="relative min-h-[88vh] w-full overflow-hidden" aria-label="Introduction">
+    <section id="top" className="relative min-h-[88svh] w-full overflow-hidden" aria-label="Introduction">
       <ImageSlot
+        priority
         src={hero}
         caption="IMAGE: GreenPeak kit + slippers in a Thai hotel bathroom (full-bleed)"
         alt="GreenPeak Transform amenity kit and slippers in a Thai hotel bathroom"
@@ -98,7 +100,7 @@ export function Hero() {
         className="absolute inset-0 h-full rounded-none"
       />
       <div className="hero-scrim absolute inset-0" />
-      <div className="container-gp relative flex min-h-[88vh] flex-col justify-end pb-16 pt-24 md:pb-24">
+      <div className="container-gp relative flex min-h-[88svh] flex-col justify-end pb-16 pt-24 md:pb-24">
         <div className="max-w-3xl text-ivory">
           <h1 className="text-4xl leading-[1.08] md:text-7xl">Sustainable guest amenities for Thailand's finest hotels.</h1>
           <p className="mt-6 max-w-xl text-base md:text-lg">

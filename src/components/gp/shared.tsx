@@ -39,17 +39,27 @@ export function ImageSlot({
   src,
   ratio = "aspect-[4/5]",
   className,
+  priority = false,
 }: {
   caption: string;
   alt: string;
   src?: string;
   ratio?: string;
   className?: string;
+  /** Above-the-fold image (hero): load eagerly with high fetch priority. */
+  priority?: boolean;
 }) {
   return (
     <div className={cn("relative overflow-hidden rounded-md bg-slot", ratio, className)}>
       {src ? (
-        <img src={src} alt={alt} className="h-full w-full object-cover" loading="lazy" />
+        <img
+          src={src}
+          alt={alt}
+          className="h-full w-full object-cover"
+          loading={priority ? "eager" : "lazy"}
+          fetchPriority={priority ? "high" : "auto"}
+          decoding="async"
+        />
       ) : (
         <div role="img" aria-label={alt} className="flex h-full w-full items-center justify-center p-4 text-center">
           <span className="text-xs text-muted-foreground">{caption}</span>

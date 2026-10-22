@@ -13,7 +13,10 @@ async function submitLead(payload: Record<string, unknown>) {
   console.log("[lead]", payload);
 }
 
-const inputCls = "w-full rounded-md border border-input bg-card px-3 py-2.5 text-sm";
+// Mobile-first: 16px text on phones stops iOS Safari from zooming on focus; 48px tall touch targets.
+const inputCls = "w-full rounded-md border border-input bg-card px-3 py-3 text-base lg:py-2.5 lg:text-sm";
+const checkCls = "h-5 w-5 shrink-0 accent-teak lg:h-4 lg:w-4";
+const choiceLabelCls = "flex min-h-11 items-center gap-3 lg:min-h-0 lg:gap-2";
 
 function Field({ label, error, children, optional }: { label: string; error?: string | undefined; children: React.ReactNode; optional?: boolean }) {
   return (
@@ -30,8 +33,8 @@ function Field({ label, error, children, optional }: { label: string; error?: st
 function ConsentBox({ reg, error }: { reg: object; error?: string | undefined }) {
   return (
     <div>
-      <label className="flex items-start gap-3 text-sm">
-        <input type="checkbox" {...reg} className="mt-1 h-4 w-4 accent-teak" />
+      <label className="flex min-h-11 items-start gap-3 py-2 text-sm lg:min-h-0 lg:py-0">
+        <input type="checkbox" {...reg} className={`${checkCls} mt-0.5 lg:mt-1`} />
         <span>I consent to the collection and use of my personal data as described in the privacy notice (Thai PDPA).</span>
       </label>
       {error && <span className="mt-1 block text-xs text-destructive">{error}</span>}
@@ -72,7 +75,7 @@ function HotelForm({ prefill, onDone }: { prefill: Prefill; onDone: () => void }
         <legend className="mb-2 text-sm font-medium">Products</legend>
         <div className="flex flex-wrap gap-x-6 gap-y-2 text-sm">
           {[["amenity", "Amenity kits"], ["slippers", "Slippers"], ["chaona", "CHAONA"]].map(([v, l]) => (
-            <label key={v} className="flex items-center gap-2"><input type="checkbox" value={v} className="h-4 w-4 accent-teak" {...f.register("products")} />{l}</label>
+            <label key={v} className={choiceLabelCls}><input type="checkbox" value={v} className={checkCls} {...f.register("products")} />{l}</label>
           ))}
         </div>
       </fieldset>
@@ -80,7 +83,7 @@ function HotelForm({ prefill, onDone }: { prefill: Prefill; onDone: () => void }
         <legend className="mb-2 text-sm font-medium">I need</legend>
         <div className="flex flex-wrap gap-x-6 gap-y-2 text-sm">
           {[["quotation", "Quotation"], ["callback", "Call back"]].map(([v, l]) => (
-            <label key={v} className="flex items-center gap-2"><input type="radio" value={v} className="h-4 w-4 accent-teak" {...f.register("need")} />{l}</label>
+            <label key={v} className={choiceLabelCls}><input type="radio" value={v} className={checkCls} {...f.register("need")} />{l}</label>
           ))}
         </div>
         {e.need && <span className="mt-1 block text-xs text-destructive">{e.need.message}</span>}
@@ -126,7 +129,7 @@ export function RequestForm() {
 
 export function Footer() {
   return (
-    <footer className="bg-charcoal pb-24 pt-16 text-ivory md:pb-12">
+    <footer className="bg-charcoal pb-24 pt-16 text-ivory lg:pb-12">
       <div className="container-gp grid gap-10 md:grid-cols-3">
         <div>
           <p className="font-display text-2xl">GreenPeak Transform</p>
@@ -137,13 +140,13 @@ export function Footer() {
         <div className="space-y-2 text-sm">
           <p>Bangkok, Thailand</p>
           <NeedFromGreenpeak label="full address" />
-          <p className="pt-2"><a href="mailto:Pharunyu.l@gmail.com" className="underline-offset-4 hover:underline">Pharunyu.l@gmail.com</a></p>
+          <p><a href="mailto:Pharunyu.l@gmail.com" className="inline-flex min-h-11 items-center break-all underline-offset-4 hover:underline">Pharunyu.l@gmail.com</a></p>
         </div>
-        <ul className="space-y-2 text-sm">
-          <li><a href={LINE_URL} target="_blank" rel="noreferrer" onClick={() => trackEvent("footer_line")} className="hover:underline">LINE</a></li>
-          <li><a href="https://www.linkedin.com/" target="_blank" rel="noreferrer" className="hover:underline">LinkedIn</a></li>
-          <li><a href="https://greenpeaktransform.com/partnership/" target="_blank" rel="noreferrer" className="hover:underline">GeoAsia Initiative</a></li>
-          <li><a href="#" className="hover:underline">Privacy notice (Thai PDPA)</a></li>
+        <ul className="text-sm">
+          <li><a href={LINE_URL} target="_blank" rel="noreferrer" onClick={() => trackEvent("footer_line")} className="inline-flex min-h-11 min-w-11 items-center hover:underline">LINE</a></li>
+          <li><a href="https://www.linkedin.com/" target="_blank" rel="noreferrer" className="inline-flex min-h-11 min-w-11 items-center hover:underline">LinkedIn</a></li>
+          <li><a href="https://greenpeaktransform.com/partnership/" target="_blank" rel="noreferrer" className="inline-flex min-h-11 min-w-11 items-center hover:underline">GeoAsia Initiative</a></li>
+          <li><a href="#" className="inline-flex min-h-11 min-w-11 items-center hover:underline">Privacy notice (Thai PDPA)</a></li>
         </ul>
       </div>
       <div className="container-gp mt-12 border-t border-ivory/20 pt-6 text-xs text-ivory/70">
