@@ -129,7 +129,7 @@ export function RequestForm() {
 
 export function Footer() {
   return (
-    <footer className="bg-charcoal pb-24 pt-16 text-ivory lg:pb-12">
+    <footer className="bg-charcoal py-16 text-ivory lg:pb-12">
       <div className="container-gp grid gap-10 md:grid-cols-3">
         <div>
           <p className="font-display text-2xl">GreenPeak Transform</p>

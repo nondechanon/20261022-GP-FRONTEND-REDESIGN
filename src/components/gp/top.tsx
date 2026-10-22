@@ -1,7 +1,8 @@
 import hero from "@/assets/gp/hero.jpg";
 import amenities from "@/assets/gp/ecoamenities.jpg";
+import logo from "@/assets/gp/logo.png";
 import { useState } from "react";
-import { Menu, X, MessageCircle, Phone } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import {
   CtaButton,
   ImageSlot,
@@ -22,7 +23,7 @@ const NAV = [
 
 export function UtilityBar() {
   return (
-    // Mobile-first: below lg (phones and tablets) LINE / WhatsApp live in the sticky bottom bar, so this strip is lg+ only.
+    // Desktop-only strip (lg+).
     <div className="hidden bg-charcoal text-ivory lg:block">
       <div className="container-gp flex items-center justify-between gap-4 py-2 text-xs">
         <p>Now quoting 2027 amenity programs for Thai hotels</p>
@@ -43,7 +44,9 @@ export function Header() {
     <>
       <header className="sticky top-0 z-40 border-b border-border bg-ivory">
         <div className="container-gp flex h-16 items-center justify-between gap-4 md:h-20">
-          <a href="#top" className="inline-flex min-h-11 items-center font-display text-xl tracking-tight text-teak md:text-2xl">GreenPeak Transform</a>
+          <a href="#top" aria-label="GreenPeak Transformation, back to top" className="inline-flex min-h-11 items-center">
+            <img src={logo} alt="GreenPeak Transformation" width={1000} height={162} className="h-9 w-auto md:h-12" />
+          </a>
           <nav aria-label="Main" className="hidden lg:block">
             <ul className="flex gap-8 text-sm">
               {NAV.map((n) => (
@@ -75,15 +78,6 @@ export function Header() {
           </nav>
         )}
       </header>
-      {/* Mobile-only sticky bottom bar */}
-      <div className="fixed inset-x-0 bottom-0 z-40 flex gap-2 border-t border-border bg-ivory p-2 pb-[max(0.5rem,env(safe-area-inset-bottom,0px))] pl-[max(0.5rem,env(safe-area-inset-left,0px))] pr-[max(0.5rem,env(safe-area-inset-right,0px))] lg:hidden">
-        <a href={LINE_URL} target="_blank" rel="noreferrer" onClick={() => trackEvent("mobilebar_line")} aria-label="Chat on LINE" className="inline-flex min-h-11 flex-1 items-center justify-center gap-2 rounded-md border border-teak px-3 text-sm text-teak">
-          <MessageCircle className="h-4 w-4" strokeWidth={1.5} /> LINE
-        </a>
-        <a href={WHATSAPP_URL} target="_blank" rel="noreferrer" onClick={() => trackEvent("mobilebar_whatsapp")} aria-label="Chat on WhatsApp" className="inline-flex min-h-11 flex-1 items-center justify-center gap-2 rounded-md border border-teak px-3 text-sm text-teak">
-          <Phone className="h-4 w-4" strokeWidth={1.5} /> WhatsApp
-        </a>
-      </div>
     </>
   );
 }
@@ -94,14 +88,14 @@ export function Hero() {
       <ImageSlot
         priority
         src={hero}
-        caption="IMAGE: GreenPeak kit + slippers in a Thai hotel bathroom (full-bleed)"
-        alt="GreenPeak Transform amenity kit and slippers in a Thai hotel bathroom"
+        caption="IMAGE: hotel pool terrace (full-bleed)"
+        alt="Hotel pool terrace with green and white scalloped umbrellas and loungers"
         ratio=""
         className="absolute inset-0 h-full rounded-none"
       />
       <div className="hero-scrim absolute inset-0" />
       <div className="container-gp relative flex min-h-[88svh] flex-col justify-end pb-16 pt-24 md:pb-24">
-        <div className="max-w-3xl text-ivory">
+        <div className="max-w-3xl text-ivory [text-shadow:0_1px_14px_oklch(0.15_0.02_160/0.45)]">
           <h1 className="text-4xl leading-[1.08] md:text-7xl">Sustainable guest amenities for Thailand's finest hotels.</h1>
           <p className="mt-6 max-w-xl text-base md:text-lg">
             Eco amenity kits, slippers and our own CHAONA rice straws, custom-branded with your logo and supplied from Bangkok.
@@ -118,18 +112,7 @@ export function Hero() {
 export function AmenityKits() {
   const packaging = "Kraft, sugarcane, stone-paper or paper sachet, or paper / kraft box.";
   const kits = [
-    {
-      name: "Bath & Hair",
-      slug: "bath-hair",
-      specLabel: "Contents",
-      spec: "Cornstarch-based shower cap, natural fiber or cotton loofah, bamboo / wood or cornstarch-based comb.",
-    },
-    {
-      name: "Vanity",
-      slug: "vanity",
-      specLabel: "Contents",
-      spec: "Wood cotton buds (4 pcs), cotton pads (3 pcs), nail file, sewing kit (6 threads, 2 buttons, needle, pin).",
-    },
+    // Display order, left to right: Dental, Shaving, Vanity, Bath & Hair.
     {
       name: "Dental",
       slug: "dental",
@@ -141,6 +124,18 @@ export function AmenityKits() {
       slug: "shaving",
       specLabel: "Materials",
       spec: "Wood handle or cornstarch-based handle. Choice of 3 cover styles; custom colors.",
+    },
+    {
+      name: "Vanity",
+      slug: "vanity",
+      specLabel: "Contents",
+      spec: "Wood cotton buds (4 pcs), cotton pads (3 pcs), nail file, sewing kit (6 threads, 2 buttons, needle, pin).",
+    },
+    {
+      name: "Bath & Hair",
+      slug: "bath-hair",
+      specLabel: "Contents",
+      spec: "Cornstarch-based shower cap, natural fiber or cotton loofah, bamboo / wood or cornstarch-based comb.",
     },
   ];
   return (
