@@ -119,11 +119,6 @@ export function AmenityKits() {
   return (
     <Section id="amenities" label="Amenity Kits">
       <SectionTitle eyebrow="For guest rooms" title="Amenity Kits" />
-      <div className="mb-8">
-        <CtaButton variant="secondary" track="view_amenities_catalog" onClick={() => window.open("https://drive.google.com/file/d/1z3HqGJmn3R5_JX8LVh-FIPOw_mrSdHRU/view?usp=sharing", "_blank", "noopener,noreferrer")}>
-          View Amenities Catalog
-        </CtaButton>
-      </div>
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
         {kits.map((k) => (
           <article key={k} className="flex flex-col rounded-md border border-border bg-card p-3 transition-colors duration-300 hover:border-charcoal">
@@ -140,6 +135,11 @@ export function AmenityKits() {
             </div>
           </article>
         ))}
+      </div>
+      <div className="mt-10">
+        <CtaButton variant="secondary" track="view_amenities_catalog" onClick={() => window.open("https://drive.google.com/file/d/1z3HqGJmn3R5_JX8LVh-FIPOw_mrSdHRU/view?usp=sharing", "_blank", "noopener,noreferrer")}>
+          View Amenities Catalog
+        </CtaButton>
       </div>
     </Section>
   );
