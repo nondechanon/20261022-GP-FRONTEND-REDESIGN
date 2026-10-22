@@ -8,3 +8,5 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+- Keep hotel request validation in the browser-safe `request-schema` module so allowed products and request types can be tested independently of presentation.

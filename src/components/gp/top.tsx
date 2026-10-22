@@ -19,7 +19,6 @@ const NAV = [
   { label: "CHAONA", href: "#chaona" },
   { label: "Sustainability", href: "#sustainability" },
   { label: "About", href: "#about" },
-  { label: "Export", href: "#export" },
 ];
 
 export function UtilityBar() {
@@ -32,9 +31,7 @@ export function UtilityBar() {
           <span aria-hidden>/</span>
           <a href={WHATSAPP_URL} target="_blank" rel="noreferrer" onClick={() => trackEvent("utility_whatsapp")} className="hover:underline">WhatsApp</a>
         </div>
-        <a href="#export" onClick={() => trackEvent("utility_export")} className="hover:underline">
-          Thai Food Export &gt;
-        </a>
+
       </div>
     </div>
   );
@@ -55,9 +52,6 @@ export function Header() {
             </ul>
           </nav>
           <div className="flex items-center gap-2">
-            <CtaButton track="header_sample_kit" onClick={() => goToRequest({ mode: "hotel", need: "sample" })} className="hidden sm:inline-flex">
-              Request Sample Kit
-            </CtaButton>
             <button
               type="button"
               aria-label={open ? "Close menu" : "Open menu"}
@@ -82,10 +76,7 @@ export function Header() {
         )}
       </header>
       {/* Mobile-only sticky bottom bar */}
-      <div className="fixed inset-x-0 bottom-0 z-40 flex gap-2 border-t border-border bg-ivory p-2 md:hidden">
-        <CtaButton track="mobilebar_sample_kit" onClick={() => goToRequest({ mode: "hotel", need: "sample" })} className="flex-1 py-3">
-          Request Sample Kit
-        </CtaButton>
+      <div className="fixed inset-x-0 bottom-0 z-40 flex justify-center gap-2 border-t border-border bg-ivory p-2 md:hidden">
         <a href={LINE_URL} target="_blank" rel="noreferrer" onClick={() => trackEvent("mobilebar_line")} aria-label="Chat on LINE" className="inline-flex items-center gap-1 rounded-md border border-teak px-3 text-sm text-teak">
           <MessageCircle className="h-4 w-4" strokeWidth={1.5} /> LINE
         </a>
@@ -115,7 +106,6 @@ export function Hero() {
             Eco amenity kits, slippers and our own CHAONA rice straws, custom-branded with your logo and supplied from Bangkok.
           </p>
           <div className="mt-10 flex flex-wrap gap-3">
-            <CtaButton track="hero_sample_kit" onClick={() => goToRequest({ mode: "hotel", need: "sample" })}>Request a Sample Kit</CtaButton>
             <CtaButton variant="secondary-light" track="hero_quotation" onClick={() => goToRequest({ mode: "hotel", need: "quotation" })}>Get a Quotation</CtaButton>
           </div>
         </div>
@@ -124,45 +114,16 @@ export function Hero() {
   );
 }
 
-const SHOW_LOGOS = false;
-
-export function ProofStrip() {
-  return (
-    <Section className="border-b border-border py-12 md:py-16" label="Proof">
-      {/* Show logos if available (set SHOW_LOGOS = true), otherwise show the fact tiles. */}
-      <div className={SHOW_LOGOS ? "" : "mb-10"}>
-        <ul className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
-          {Array.from({ length: 6 }).map((_, i) => (
-            <li key={i} className="flex aspect-[3/2] items-center justify-center rounded-md bg-slot p-2 text-center">
-              <NeedFromGreenpeak label="hotel client logo (with permission)" />
-            </li>
-          ))}
-        </ul>
-      </div>
-      {!SHOW_LOGOS && (
-        <dl className="grid grid-cols-2 border-t border-border lg:grid-cols-4">
-          {([
-            ["Kit SKUs available", "number of kit SKUs"],
-            ["Delivery area", "delivery area"],
-            ["Typical lead time", "typical lead time"],
-            ["Minimum order for custom branding", "custom branding MOQ"],
-          ] as const).map(([t, l]) => (
-            <div key={t} className="border-b border-border p-5 lg:border-b-0 lg:border-r last:border-r-0">
-              <dt className="eyebrow mb-3 text-muted-foreground">{t}</dt>
-              <dd><NeedFromGreenpeak label={l} /></dd>
-            </div>
-          ))}
-        </dl>
-      )}
-    </Section>
-  );
-}
-
 export function AmenityKits() {
   const kits = ["Bathroom", "Vanity", "Dental", "Shaving"];
   return (
     <Section id="amenities" label="Amenity Kits">
       <SectionTitle eyebrow="For guest rooms" title="Amenity Kits" />
+      <div className="mb-8">
+        <CtaButton variant="secondary" track="view_amenities_catalog" onClick={() => window.open("https://drive.google.com/file/d/1z3HqGJmn3R5_JX8LVh-FIPOw_mrSdHRU/view?usp=sharing", "_blank", "noopener,noreferrer")}>
+          View Amenities Catalog
+        </CtaButton>
+      </div>
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
         {kits.map((k) => (
           <article key={k} className="flex flex-col rounded-md border border-border bg-card p-3 transition-colors duration-300 hover:border-charcoal">
@@ -201,8 +162,8 @@ export function Slippers() {
         ))}
       </div>
       <div className="mt-10">
-        <CtaButton variant="secondary" track="slippers_add_to_kit" onClick={() => goToRequest({ mode: "hotel", need: "sample", product: "slippers" })}>
-          Add slippers to my sample kit
+        <CtaButton variant="secondary" track="view_slipper_catalog" onClick={() => window.open("https://drive.google.com/file/d/1-cNsGqdac7Sq9TT7dLEA_cG43ZcdMwjV/view?usp=sharing", "_blank", "noopener,noreferrer")}>
+          View Slipper Catalog
         </CtaButton>
       </div>
     </Section>

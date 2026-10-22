@@ -1,8 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Toaster } from "@/components/ui/sonner";
-import { UtilityBar, Header, Hero, ProofStrip, AmenityKits, Slippers, Customization } from "@/components/gp/top";
-import { Chaona, Sustainability, WhyGreenpeak, ExportBand } from "@/components/gp/middle";
-import { RequestForm, Faq, Footer } from "@/components/gp/bottom";
+import { UtilityBar, Header, Hero, AmenityKits, Slippers, Customization } from "@/components/gp/top";
+import { Chaona, Sustainability, WhyGreenpeak } from "@/components/gp/middle";
+import { RequestForm, Footer } from "@/components/gp/bottom";
 
 const TITLE = "GreenPeak Transform | Sustainable Guest Amenities for Thai Hotels";
 const DESC =
@@ -29,16 +29,13 @@ function Index() {
       <Header />
       <main>
         <Hero />
-        <ProofStrip />
         <AmenityKits />
         <Slippers />
         <Customization />
         <Chaona />
         <Sustainability />
         <WhyGreenpeak />
-        <ExportBand />
         <RequestForm />
-        <Faq />
       </main>
       <Footer />
       <Toaster />
