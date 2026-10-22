@@ -119,7 +119,7 @@ export function AmenityKits() {
   return (
     <Section id="amenities" label="Amenity Kits">
       <SectionTitle eyebrow="For guest rooms" title="Amenity Kits" />
-      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="grid grid-cols-2 gap-3 sm:gap-6 lg:grid-cols-4">
         {kits.map((k) => (
           <article key={k} className="flex flex-col rounded-md border border-border bg-card p-3 transition-colors duration-300 hover:border-charcoal">
             <ImageSlot caption={`IMAGE: ${k} kit`} alt={`GreenPeak Transform ${k.toLowerCase()} kit`} />
@@ -149,7 +149,7 @@ export function Slippers() {
   return (
     <Section className="border-t border-border" label="Slippers">
       <SectionTitle eyebrow="For guest rooms" title="Slippers" />
-      <div className="grid gap-6 md:grid-cols-3">
+      <div className="grid grid-cols-2 gap-3 sm:gap-6 md:grid-cols-3">
         {[1, 2, 3].map((n) => (
           <article key={n} className="rounded-md border border-border bg-card p-3 transition-colors duration-300 hover:border-charcoal">
             <ImageSlot caption={`IMAGE: Slipper style ${n}`} alt={`GreenPeak Transform slipper style ${n}`} />
