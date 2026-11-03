@@ -1,6 +1,6 @@
 import straws from "@/assets/gp/sustainabletableware.jpg";
 import leaves from "@/assets/gp/sustainability.jpg";
-import { ImageSlot, Section, SectionTitle, trackEvent, LINE_URL } from "./shared";
+import { ImageSlot, Section, SectionTitle } from "./shared";
 
 export function Chaona() {
   return (
@@ -63,22 +63,6 @@ export function WhyGreenpeak() {
         <p className="text-base leading-relaxed text-foreground/80 md:text-lg">
           With a business heritage dating back to 2001, our foundation is in Business-to-Government (B2G) operations, specializing in IT hardware supply and installation for government and institutional customers. This experience has shaped our understanding of business supply, project coordination, and customer requirements. Today, GreenPeak Transformation builds on this foundation to serve the hospitality industry with practical product solutions and personalized service.
         </p>
-      </div>
-      <div className="mt-16 flex max-w-3xl flex-col gap-6 rounded-md border border-border bg-background p-5 sm:flex-row sm:items-center">
-        <ImageSlot caption="IMAGE: contact photo" alt="Photo of your GreenPeak Transform contact" ratio="aspect-square" className="w-24 shrink-0" />
-        <div className="flex-1">
-          <p className="eyebrow mb-2 text-muted-foreground">Your contact</p>
-          <p className="font-display text-2xl">Mr. Pharunyu L.</p><p className="text-sm text-muted-foreground"><a href="tel:+66994246141" className="hover:underline">+66 99 424 6141</a> · <a href="mailto:Pharunyu.l@gmail.com" className="hover:underline">Pharunyu.l@gmail.com</a></p>
-        </div>
-        <a
-          href={LINE_URL}
-          target="_blank"
-          rel="noreferrer"
-          onClick={() => trackEvent("contact_talk_on_line")}
-          className="inline-flex items-center justify-center gap-2 rounded-md border border-teak px-5 py-3 text-sm text-teak transition-colors duration-300 hover:bg-teak hover:text-ivory"
-        >
-          Talk to Pharunyu on LINE
-        </a>
       </div>
     </Section>
   );
