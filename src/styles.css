@@ -134,11 +134,12 @@
   @media (prefers-reduced-motion: reduce) { opacity: 1; transform: none; transition: none; }
 }
 
-/* Looping client-logo strip: the track holds two identical sets, so shifting it
-   by -50% lands the second set exactly where the first started (seamless loop). */
+/* Looping client-logo strip: the track holds two identical sets, so moving it between
+   -50% and 0 lands the second set exactly where the first started (seamless loop).
+   Direction: left to right. */
 @keyframes gp-marquee {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
+  from { transform: translateX(-50%); }
+  to { transform: translateX(0); }
 }
 
 .marquee {
