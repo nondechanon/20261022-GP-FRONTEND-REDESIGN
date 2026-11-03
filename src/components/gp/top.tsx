@@ -96,6 +96,9 @@ export function ProofStrip() {
   const slots = Array.from({ length: 6 });
   return (
     <section aria-label="Hotel clients" className="border-b border-border py-12 md:py-16">
+      <h2 className="mb-8 text-center font-sans text-2xl font-bold uppercase tracking-[0.18em] text-charcoal md:mb-12 md:text-3xl">
+        Our clients
+      </h2>
       <div className="marquee">
         {/* Two identical sets so the -50% translate loops seamlessly. */}
         <ul className="marquee-track gap-4 pr-4">
