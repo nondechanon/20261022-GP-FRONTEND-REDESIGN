@@ -3,7 +3,7 @@ import customizationAsset from "@/assets/gp/customization-logo.png.asset.json";
 import logo from "@/assets/gp/logo.png";
 import slipperUltrasonic from "@/assets/gp/slipper-ultrasonic.jpg";
 import slipperNonWoven from "@/assets/gp/slipper-non-woven.jpg";
-import slipperTerry from "@/assets/gp/slipper-terry.jpg";
+import slipperNapCloth from "@/assets/gp/slipper-nap-cloth.jpg";
 import dentalKitImg from "@/assets/gp/dental-kit.png.asset.json";
 import shavingKitImg from "@/assets/gp/shaving-kit.png.asset.json";
 import vanityKitImg from "@/assets/gp/vanity-kit.png.asset.json";
@@ -218,8 +218,8 @@ export function Slippers() {
     {
       name: "Nap Cloth",
       slug: "nap-cloth",
-      image: undefined, // photo to come
-      imageAlt: undefined,
+      image: slipperNapCloth,
+      imageAlt: "Pair of white nap cloth slippers showing the non-skid EVA sole",
       models: "SN01",
       upper: "Comfortable nap cloth with a 3 mm soft sponge heel.",
       sole: "4 mm non-skid EVA sole.",
@@ -227,8 +227,8 @@ export function Slippers() {
     {
       name: "Terry",
       slug: "terry",
-      image: slipperTerry,
-      imageAlt: "Pair of white terry cloth slippers showing the non-skid EVA sole",
+      image: undefined, // photo to come
+      imageAlt: undefined,
       models: "ST01, ST02",
       upper: "Plush terry cloth, classic spa feel.",
       sole: "Single sole with 3 mm EVA (ST01) or double sole with 3 mm EVA and 4 mm padded footbed (ST02).",
