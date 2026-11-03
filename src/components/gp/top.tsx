@@ -6,6 +6,7 @@ import { Menu, X } from "lucide-react";
 import {
   CtaButton,
   ImageSlot,
+  NeedFromGreenpeak,
   Section,
   SectionTitle,
   goToRequest,
@@ -84,6 +85,30 @@ export function Hero() {
             <CtaButton variant="secondary-light" track="hero_quotation" onClick={() => goToRequest({ mode: "hotel", need: "quotation" })}>Get a Quotation</CtaButton>
           </div>
         </div>
+      </div>
+    </section>
+  );
+}
+
+/** Looping hotel-client logo strip, above Amenity Kits.
+ *  Swap the placeholder slots for real logos once Greenpeak supplies them (with permission). */
+export function ProofStrip() {
+  const slots = Array.from({ length: 6 });
+  return (
+    <section aria-label="Hotel clients" className="border-b border-border py-12 md:py-16">
+      <div className="marquee">
+        {/* Two identical sets so the -50% translate loops seamlessly. */}
+        <ul className="marquee-track gap-4 pr-4">
+          {[...slots, ...slots].map((_, i) => (
+            <li
+              key={i}
+              aria-hidden={i >= slots.length}
+              className="flex aspect-[3/2] w-[160px] shrink-0 items-center justify-center rounded-md bg-slot p-2 text-center sm:w-[200px] lg:w-[240px]"
+            >
+              <NeedFromGreenpeak label="hotel client logo (with permission)" />
+            </li>
+          ))}
+        </ul>
       </div>
     </section>
   );

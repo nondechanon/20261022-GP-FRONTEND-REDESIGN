@@ -133,3 +133,30 @@
   &.is-visible { opacity: 1; transform: none; }
   @media (prefers-reduced-motion: reduce) { opacity: 1; transform: none; transition: none; }
 }
+
+/* Looping client-logo strip: the track holds two identical sets, so shifting it
+   by -50% lands the second set exactly where the first started (seamless loop). */
+@keyframes gp-marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.marquee {
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(to right, transparent, black 6%, black 94%, transparent);
+  mask-image: linear-gradient(to right, transparent, black 6%, black 94%, transparent);
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: gp-marquee 38s linear infinite;
+}
+
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track { animation: none; }
+}
