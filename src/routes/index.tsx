@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Toaster } from "@/components/ui/sonner";
-import { Header, Hero, AmenityKits, Slippers, Customization } from "@/components/gp/top";
+import { Header, Hero, ProofStrip, AmenityKits, Slippers, Customization } from "@/components/gp/top";
 import { Chaona, Sustainability, WhyGreenpeak } from "@/components/gp/middle";
 import { RequestForm, Footer } from "@/components/gp/bottom";
 
@@ -28,6 +28,7 @@ function Index() {
       <Header />
       <main>
         <Hero />
+        <ProofStrip />
         <AmenityKits />
         <Slippers />
         <Customization />

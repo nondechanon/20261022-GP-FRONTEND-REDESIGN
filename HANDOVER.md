@@ -58,26 +58,33 @@ bun test           # vitest
    fixed bottom bar with LINE + WhatsApp buttons.
 3. **Hero** — full-bleed photo, headline "Sustainable guest amenities for Thailand's finest
    hotels.", single CTA "Get a Quotation" → scrolls to form.
-4. **Amenity Kits** — 4 cards (Bath & Hair, Vanity, Dental, Shaving) with Contents/Materials +
+4. **ProofStrip (Hotel clients)** — looping marquee of 6 gray logo slots, each a
+   NeedFromGreenpeak chip "hotel client logo (with permission)", between Hero and Amenity Kits.
+   The loop is `.marquee` / `.marquee-track` in `src/styles.css` (38s linear infinite, pauses on
+   hover, off under `prefers-reduced-motion`); the track holds two identical 6-slot sets so the
+   -50% shift is seamless. Swap the slots for real logos once Greenpeak supplies them.
+5. **Amenity Kits** — 4 cards (Bath & Hair, Vanity, Dental, Shaving) with Contents/Materials +
    Packaging copy, each with "Get a Quotation"; 2×2 grid on phones, 4-up on desktop. Below the
    grid: custom-branding note, then **View Amenities Catalog** (Google Drive PDF, opens in new tab).
-5. **Slippers** — 3 style cards (materials still placeholders), then **View Slipper Catalog**
+6. **Slippers** — 3 style cards (materials still placeholders), then **View Slipper Catalog**
    (separate Google Drive PDF).
-6. **Customization** — "Your logo, your story", 4-step process, "Start a Branded Kit" CTA.
-7. **CHAONA** — dark teak band, rice-straw brand, spec tiles, disabled "Visit CHAONA" link.
-8. **Sustainability** — Materials / Certifications / Impact columns.
-9. **Why GreenPeak (About)** — 3 differentiators + contact card (Pharunyu, phone, email, LINE).
-10. **Request a quotation** — form: name, hotel, email, phone, rooms (optional), products
+7. **Customization** — "Product Customization" paragraph, "Start a Branded Kit" CTA, and the
+   co-branded amenity sachet mock-up photo (CDN asset `src/assets/gp/customization-logo.png.asset.json`).
+8. **CHAONA** — dark teak band, rice-straw brand, spec tiles, disabled "Visit CHAONA" link.
+9. **Sustainability** — Materials / Certifications / Impact columns.
+10. **Why GreenPeak (About)** — 3 differentiators + contact card (Pharunyu, phone, email, LINE).
+11. **Request a quotation** — form: name, hotel, email, phone, rooms (optional), products
     checkboxes (Amenity kits / Slippers / CHAONA), "I need" radio (Quotation / Call back),
     notes, PDPA consent (required). Submits → thank-you state with "Send another request".
-11. **Footer** — company name, Bangkok, email, LINE / LinkedIn / GeoAsia / Privacy links.
+12. **Footer** — company name, Bangkok, email, LINE / LinkedIn / GeoAsia / Privacy links.
 
 ### Removed by client request (do NOT re-add)
 
 - All **sample requests** (including CHAONA samples) — only **quotation** and **callback** requests exist.
 - The **Export** section and any importer/export content.
 - The **founder** quote/photo section, the **FAQ** section, and the proof-fact tiles
-  (SKU counts, delivery area, lead time, MOQ).
+  (SKU counts, delivery area, lead time, MOQ). The looping client-logo strip itself was brought
+  back by client request (item 4 above) — only the fact tiles stay out.
 - The Sustainability "View Catalog 2026" button. Catalog buttons live **only** in Amenities and Slippers.
 
 ## 4. Design system ("Rice & Teak")
