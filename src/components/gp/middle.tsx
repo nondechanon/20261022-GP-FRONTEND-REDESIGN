@@ -1,6 +1,7 @@
 import straws from "@/assets/gp/sustainabletableware.jpg";
-import { FileText, ShieldCheck, Recycle, MapPin, Leaf, MessageCircle } from "lucide-react";
-import { ImageSlot, NeedFromGreenpeak, Section, SectionTitle, trackEvent, LINE_URL } from "./shared";
+import leaves from "@/assets/gp/sustainability.jpg";
+import { MapPin, Leaf, MessageCircle } from "lucide-react";
+import { ImageSlot, Section, SectionTitle, trackEvent, LINE_URL } from "./shared";
 
 export function Chaona() {
   return (
@@ -27,29 +28,22 @@ export function Chaona() {
 export function Sustainability() {
   return (
     <Section id="sustainability" label="Sustainability">
-      <SectionTitle eyebrow="Sustainability you can verify" title="Every claim backed by a document." />
-      <div className="grid border-t border-border md:grid-cols-3">
-        <div className="border-b border-border py-8 md:border-b-0 md:border-r md:pr-8">
-          <FileText className="mb-5 h-6 w-6 text-teak" strokeWidth={1.25} />
-          <h3 className="mb-3 text-2xl">Materials</h3>
-          <p className="text-sm text-muted-foreground">Downloadable spec sheets per SKU.</p>
+      <div className="grid items-center gap-12 lg:grid-cols-2">
+        <div>
+          <SectionTitle title="Sustainability" />
+          <p className="max-w-xl text-base leading-relaxed text-foreground/80 md:text-lg">
+            At GreenPeak, sustainability is the foundation of everything we create. We bridge the gap between luxury guest experiences and environmental responsibility by engineering amenities crafted entirely from rapidly renewable, plant-based materials. From non-toxic soy inks to zero-plastic packaging, every product in our portfolio is designed to reduce landfill reliance, conserve natural resources, and empower hotel partners to lead the transition toward conscious hospitality.
+          </p>
+          {/* Certificate logos go here (row of badges under the paragraph). */}
         </div>
-        <div className="border-b border-border py-8 md:border-b-0 md:border-r md:px-8">
-          <ShieldCheck className="mb-5 h-6 w-6 text-teak" strokeWidth={1.25} />
-          <h3 className="mb-3 text-2xl">Certifications</h3>
-          <NeedFromGreenpeak label="supplier or factory certificates" />
-        </div>
-        <div className="py-8 md:pl-8">
-          <Recycle className="mb-5 h-6 w-6 text-teak" strokeWidth={1.25} />
-          <h3 className="mb-3 text-2xl">Impact</h3>
-          <p className="mb-3 text-sm text-muted-foreground">Plastic items replaced, from real SKUs.</p>
-          <NeedFromGreenpeak label="plastic items replaced per 100 rooms/month" />
-        </div>
+        <ImageSlot
+          src={leaves}
+          ratio="aspect-[4/5]"
+          caption="IMAGE: eucalyptus branch"
+          alt="Eucalyptus branch against a white background"
+          className="[&_img]:object-[50%_85%]"
+        />
       </div>
-      <p className="mt-10 max-w-2xl border-t border-border pt-6 text-sm">
-        Aligned with Thailand's Roadmap on Plastic Waste Management 2018-2030 and Green Hotel procurement criteria.
-      </p>
-
     </Section>
   );
 }
