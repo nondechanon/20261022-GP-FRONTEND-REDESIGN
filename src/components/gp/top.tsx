@@ -233,6 +233,7 @@ export function Customization() {
         </div>
         <ImageSlot
           src={customizationAsset.url}
+          ratio="aspect-[4/3]"
           caption="IMAGE: mock-up of a co-branded kit"
           alt="Mock-up of co-branded amenity sachets for shampoo, conditioner, body wash, body lotion and dental kit, each marked Your Logo Here"
         />
