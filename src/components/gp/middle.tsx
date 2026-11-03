@@ -10,7 +10,7 @@ export function Chaona() {
         <div>
           <p className="eyebrow mb-4 text-celadon">A GreenPeak Original</p>
           <h2 className="text-5xl md:text-7xl">CHAONA</h2>
-          <p className="mt-4 font-display text-xl italic md:text-2xl">From guest room to rooftop bar.</p>
+          <p className="mt-4 font-display text-xl italic md:text-2xl">From nature, for nature.</p>
           <p className="mt-8 max-w-xl text-base leading-relaxed text-ivory/90 md:text-lg">
             Crafted from natural rice and plant-based ingredients, CHAONA offers a fully biodegradable, edible alternative to single-use plastics. Designed specifically for the hospitality industry, these straws provide a seamless guest experience while eliminating environmental waste. By turning renewable agricultural resources into eco-friendly dining solutions, CHAONA helps businesses make a tangible shift toward a cleaner, plastic-free future.
           </p>
