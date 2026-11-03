@@ -1,5 +1,5 @@
 import hero from "@/assets/gp/hero.jpg";
-import amenities from "@/assets/gp/ecoamenities.jpg";
+import customizationAsset from "@/assets/gp/customization-logo.png.asset.json";
 import logo from "@/assets/gp/logo.png";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
@@ -231,7 +231,11 @@ export function Customization() {
             </CtaButton>
           </div>
         </div>
-        <ImageSlot src={amenities} caption="IMAGE: mock-up of a co-branded kit" alt="Mock-up of a co-branded GreenPeak Transform amenity kit" />
+        <ImageSlot
+          src={customizationAsset.url}
+          caption="IMAGE: mock-up of a co-branded kit"
+          alt="Mock-up of co-branded amenity sachets for shampoo, conditioner, body wash, body lotion and dental kit, each marked Your Logo Here"
+        />
       </div>
     </Section>
   );
