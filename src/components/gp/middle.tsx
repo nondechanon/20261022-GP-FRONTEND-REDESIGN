@@ -1,6 +1,5 @@
 import straws from "@/assets/gp/sustainabletableware.jpg";
 import leaves from "@/assets/gp/sustainability.jpg";
-import { MapPin, Leaf, MessageCircle } from "lucide-react";
 import { ImageSlot, Section, SectionTitle, trackEvent, LINE_URL } from "./shared";
 
 export function Chaona() {
@@ -49,25 +48,23 @@ export function Sustainability() {
 }
 
 export function WhyGreenpeak() {
-  const diffs = [
-    { icon: MapPin, title: "Thai-made" },
-    { icon: Leaf, title: "Own brand, CHAONA" },
-    { icon: MessageCircle, title: "Local responsiveness: a named contact who answers on LINE" },
-  ];
   return (
-    <Section id="about" className="border-t border-border bg-card" label="Why GreenPeak">
-      <SectionTitle eyebrow="About" title="Why GreenPeak Transform" />
-      <div className="grid gap-12">
-        <ul className="grid gap-4 lg:grid-cols-3">
-          {diffs.map(({ icon: Icon, title }) => (
-            <li key={title} className="flex items-start gap-4 rounded-md border border-border bg-background p-5">
-              <Icon className="mt-1 h-5 w-5 shrink-0 text-teak" strokeWidth={1.25} />
-              <h3 className="text-xl">{title}</h3>
-            </li>
-          ))}
-        </ul>
+    <Section id="about" className="border-t border-border bg-card" label="About Us">
+      <div className="max-w-3xl">
+        <SectionTitle title="About Us" subline="Your Partner in Hotel Amenities Supply" />
+        <p className="text-base leading-relaxed text-foreground/80 md:text-lg">
+          GreenPeak Transformation supplies hotel amenities and guest essentials to hotels, resorts, and hospitality businesses. Our portfolio includes hotel slippers, personal-care amenities, and CHAONA rice straws — our own Thai brand offering an alternative to conventional plastic drinking straws. By combining carefully selected products with responsive communication, clear quotations, and personalized service, we help hospitality partners find practical sourcing solutions tailored to their needs.
+        </p>
+        <hr className="my-12 border-border md:my-16" />
+        <div className="mb-10 md:mb-14">
+          <h3 className="text-3xl md:text-4xl">Our Foundation</h3>
+          <p className="mt-4 max-w-xl text-base text-muted-foreground md:text-lg">Built on more than 20 Years of Experience</p>
+        </div>
+        <p className="text-base leading-relaxed text-foreground/80 md:text-lg">
+          With a business heritage dating back to 2001, our foundation is in Business-to-Government (B2G) operations, specializing in IT hardware supply and installation for government and institutional customers. This experience has shaped our understanding of business supply, project coordination, and customer requirements. Today, GreenPeak Transformation builds on this foundation to serve the hospitality industry with practical product solutions and personalized service.
+        </p>
       </div>
-      <div className="mt-12 flex flex-col gap-6 rounded-md border border-border bg-background p-5 sm:flex-row sm:items-center">
+      <div className="mt-16 flex max-w-3xl flex-col gap-6 rounded-md border border-border bg-background p-5 sm:flex-row sm:items-center">
         <ImageSlot caption="IMAGE: contact photo" alt="Photo of your GreenPeak Transform contact" ratio="aspect-square" className="w-24 shrink-0" />
         <div className="flex-1">
           <p className="eyebrow mb-2 text-muted-foreground">Your contact</p>
