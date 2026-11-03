@@ -23,7 +23,7 @@ export function Header() {
   return (
     <>
       <header className="sticky top-0 z-40 border-b border-border bg-ivory">
-        <div className="container-gp flex h-16 items-center justify-between gap-4 md:h-20">
+        <div className="flex h-16 w-full items-center justify-between gap-4 pl-[max(1rem,env(safe-area-inset-left,0px))] pr-[max(1rem,env(safe-area-inset-right,0px))] md:h-20 md:pl-[max(2rem,env(safe-area-inset-left,0px))] md:pr-[max(2rem,env(safe-area-inset-right,0px))] lg:pl-[max(3rem,env(safe-area-inset-left,0px))] lg:pr-[max(3rem,env(safe-area-inset-right,0px))]">
           <a href="#top" aria-label="GreenPeak Transformation, back to top" className="inline-flex min-h-11 items-center">
             <img src={logo} alt="GreenPeak Transformation" width={1000} height={162} className="h-9 w-auto md:h-12" />
           </a>
