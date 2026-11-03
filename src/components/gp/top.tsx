@@ -129,6 +129,7 @@ export function AmenityKits() {
       name: "Dental",
       slug: "dental",
       img: dentalKitImg.url,
+      ratio: "aspect-square",
       specLabel: "Materials",
       spec: "Bamboo or cornstarch-based handle, soft bristles. Approx. 17.5–18 cm. Custom handle and bristle colors.",
     },
@@ -136,6 +137,7 @@ export function AmenityKits() {
       name: "Shaving",
       slug: "shaving",
       img: shavingKitImg.url,
+      ratio: "aspect-square",
       specLabel: "Materials",
       spec: "Wood handle or cornstarch-based handle. Choice of 3 cover styles; custom colors.",
     },
@@ -143,6 +145,7 @@ export function AmenityKits() {
       name: "Vanity",
       slug: "vanity",
       img: vanityKitImg.url,
+      ratio: "aspect-square",
       specLabel: "Contents",
       spec: "Wood cotton buds (4 pcs), cotton pads (3 pcs), nail file, sewing kit (6 threads, 2 buttons, needle, pin).",
     },
@@ -150,6 +153,7 @@ export function AmenityKits() {
       name: "Bath & Hair",
       slug: "bath-hair",
       img: bathHairKitImg.url,
+      ratio: "aspect-[3/2]",
       specLabel: "Contents",
       spec: "Cornstarch-based shower cap, natural fiber or cotton loofah, bamboo / wood or cornstarch-based comb.",
     },
@@ -160,7 +164,7 @@ export function AmenityKits() {
       <div className="grid grid-cols-2 gap-3 sm:gap-6 lg:grid-cols-4">
         {kits.map((k) => (
           <article key={k.slug} className="flex flex-col rounded-md border border-border bg-card p-2 sm:p-3 transition-colors duration-300 hover:border-charcoal">
-            <ImageSlot caption={`IMAGE: ${k.name} kit`} alt={`GreenPeak Transform ${k.name.toLowerCase()} kit`} src={k.img} />
+            <ImageSlot caption={`IMAGE: ${k.name} kit`} alt={`GreenPeak Transform ${k.name.toLowerCase()} kit`} src={k.img} ratio={k.ratio} />
             <div className="flex flex-1 flex-col gap-2 p-1 pt-3 sm:p-2 sm:pt-5">
               <h3 className="text-lg sm:text-2xl">{k.name} Kit</h3>
               <p className="text-xs sm:text-sm"><span className="text-muted-foreground">{k.specLabel}: </span>{k.spec}</p>
