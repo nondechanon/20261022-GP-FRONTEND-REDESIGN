@@ -1,6 +1,9 @@
 import hero from "@/assets/gp/hero.jpg";
 import customizationAsset from "@/assets/gp/customization-logo.png.asset.json";
 import logo from "@/assets/gp/logo.png";
+import slipperUltrasonic from "@/assets/gp/slipper-ultrasonic.jpg";
+import slipperNonWoven from "@/assets/gp/slipper-non-woven.jpg";
+import slipperTerry from "@/assets/gp/slipper-terry.jpg";
 import dentalKitImg from "@/assets/gp/dental-kit.png.asset.json";
 import shavingKitImg from "@/assets/gp/shaving-kit.png.asset.json";
 import vanityKitImg from "@/assets/gp/vanity-kit.png.asset.json";
@@ -197,6 +200,8 @@ export function Slippers() {
     {
       name: "Ultrasonic Non-woven",
       slug: "ultrasonic-non-woven",
+      image: slipperUltrasonic,
+      imageAlt: "Pair of white ultrasonic non-woven slippers showing the wave-pattern sole",
       models: "SU01, SU02",
       upper: "Lightweight non-woven with durable ultrasonic seams.",
       sole: "Wave pattern sole (white, SU01) or anti-slip dot sole (black, SU02).",
@@ -204,6 +209,8 @@ export function Slippers() {
     {
       name: "Non-woven",
       slug: "non-woven",
+      image: slipperNonWoven,
+      imageAlt: "Pair of white non-woven slippers showing the non-skid EVA sole",
       models: "S01",
       upper: "Lightweight, hygienic and disposable non-woven.",
       sole: "4 mm non-skid EVA sole.",
@@ -211,6 +218,8 @@ export function Slippers() {
     {
       name: "Nap Cloth",
       slug: "nap-cloth",
+      image: undefined, // photo to come
+      imageAlt: undefined,
       models: "SN01",
       upper: "Comfortable nap cloth with a 3 mm soft sponge heel.",
       sole: "4 mm non-skid EVA sole.",
@@ -218,6 +227,8 @@ export function Slippers() {
     {
       name: "Terry",
       slug: "terry",
+      image: slipperTerry,
+      imageAlt: "Pair of white terry cloth slippers showing the non-skid EVA sole",
       models: "ST01, ST02",
       upper: "Plush terry cloth, classic spa feel.",
       sole: "Single sole with 3 mm EVA (ST01) or double sole with 3 mm EVA and 4 mm padded footbed (ST02).",
@@ -229,7 +240,12 @@ export function Slippers() {
       <div className="grid grid-cols-2 gap-3 sm:gap-6 lg:grid-cols-4">
         {slippers.map((s) => (
           <article key={s.slug} className="flex flex-col rounded-md border border-border bg-card p-2 sm:p-3 transition-colors duration-300 hover:border-charcoal">
-            <ImageSlot caption={`IMAGE: ${s.name} slipper`} alt={`GreenPeak Transform ${s.name.toLowerCase()} slipper`} />
+            <ImageSlot
+              src={s.image}
+              ratio="aspect-[4/3]"
+              caption={`IMAGE: ${s.name} slipper`}
+              alt={s.imageAlt ?? `GreenPeak Transform ${s.name.toLowerCase()} slipper`}
+            />
             <div className="flex flex-1 flex-col gap-2 p-1 pt-3 sm:p-2 sm:pt-5">
               <h3 className="text-lg sm:text-2xl">{s.name} Slipper</h3>
               <p className="text-xs sm:text-sm"><span className="text-muted-foreground">Upper: </span>{s.upper}</p>
