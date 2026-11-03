@@ -9,9 +9,6 @@ import {
   Section,
   SectionTitle,
   goToRequest,
-  trackEvent,
-  LINE_URL,
-  WHATSAPP_URL,
 } from "./shared";
 
 const NAV = [
@@ -20,23 +17,6 @@ const NAV = [
   { label: "Sustainability", href: "#sustainability" },
   { label: "About\n", href: "#about" },
 ];
-
-export function UtilityBar() {
-  return (
-    // Desktop-only strip (lg+).
-    <div className="hidden bg-charcoal text-ivory lg:block">
-      <div className="container-gp flex items-center justify-between gap-4 py-2 text-xs">
-        <p>Now quoting 2027 amenity programs for Thai hotels</p>
-        <div className="flex gap-4">
-          <a href={LINE_URL} target="_blank" rel="noreferrer" onClick={() => trackEvent("utility_line")} className="hover:underline">LINE</a>
-          <span aria-hidden>/</span>
-          <a href={WHATSAPP_URL} target="_blank" rel="noreferrer" onClick={() => trackEvent("utility_whatsapp")} className="hover:underline">WhatsApp</a>
-        </div>
-
-      </div>
-    </div>
-  );
-}
 
 export function Header() {
   const [open, setOpen] = useState(false);
