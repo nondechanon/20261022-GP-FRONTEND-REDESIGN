@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Toaster } from "@/components/ui/sonner";
-import { UtilityBar, Header, Hero, AmenityKits, Slippers, Customization } from "@/components/gp/top";
+import { Header, Hero, AmenityKits, Slippers, Customization } from "@/components/gp/top";
 import { Chaona, Sustainability, WhyGreenpeak } from "@/components/gp/middle";
 import { RequestForm, Footer } from "@/components/gp/bottom";
 
@@ -25,7 +25,6 @@ export const Route = createFileRoute("/")({
 function Index() {
   return (
     <>
-      <UtilityBar />
       <Header />
       <main>
         <Hero />
