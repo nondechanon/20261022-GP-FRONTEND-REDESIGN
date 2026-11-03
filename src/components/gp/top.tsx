@@ -34,7 +34,7 @@ export function Header() {
               ))}
             </ul>
           </nav>
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 lg:hidden">
             <button
               type="button"
               aria-label={open ? "Close menu" : "Open menu"}
