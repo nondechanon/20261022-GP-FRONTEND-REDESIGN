@@ -3,24 +3,17 @@ import { FileText, ShieldCheck, Recycle, MapPin, Leaf, MessageCircle } from "luc
 import { ImageSlot, NeedFromGreenpeak, Section, SectionTitle, trackEvent, LINE_URL } from "./shared";
 
 export function Chaona() {
-  const specs = ["Made from Thai rice", "Biodegradable (claim needs test report)", "Edible", "Supports Thai farmers"];
   return (
     <Section id="chaona" className="bg-teak text-ivory" label="CHAONA">
       <div className="grid items-center gap-12 lg:grid-cols-2">
         <ImageSlot src={straws} caption="IMAGE: CHAONA rice straw in a cocktail glass" alt="CHAONA rice straw in a cocktail glass" />
         <div>
-          <p className="eyebrow mb-4 text-celadon">Our own brand</p>
+          <p className="eyebrow mb-4 text-celadon">A GreenPeak Original</p>
           <h2 className="text-5xl md:text-7xl">CHAONA</h2>
           <p className="mt-4 font-display text-xl italic md:text-2xl">From guest room to rooftop bar.</p>
-          <ul className="mt-10 grid grid-cols-2 border-l border-t border-ivory/25">
-            {specs.map((s) => (
-              <li key={s} className="border-b border-r border-ivory/25 p-4 text-sm">{s}</li>
-            ))}
-          </ul>
-          <div className="mt-5 flex flex-col items-start gap-2">
-            <NeedFromGreenpeak label="biodegradable, edible and food-contact test reports" />
-            <NeedFromGreenpeak label="rice / farmer impact figure" />
-          </div>
+          <p className="mt-8 max-w-xl text-base leading-relaxed text-ivory/90 md:text-lg">
+            Crafted from natural rice and plant-based ingredients, CHAONA offers a fully biodegradable, edible alternative to single-use plastics. Designed specifically for the hospitality industry, these straws provide a seamless guest experience while eliminating environmental waste. By turning renewable agricultural resources into eco-friendly dining solutions, CHAONA helps businesses make a tangible shift toward a cleaner, plastic-free future.
+          </p>
           <div className="mt-10 flex flex-col items-start gap-4">
             {/* Enable only after chaonaricestraw.com is upgraded. */}
             <span aria-disabled="true" className="cursor-not-allowed text-sm text-ivory/60 underline underline-offset-4">Visit CHAONA</span>
