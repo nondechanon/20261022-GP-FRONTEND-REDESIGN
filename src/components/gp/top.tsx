@@ -4,10 +4,11 @@ import logo from "@/assets/gp/logo.png";
 import slipperUltrasonic from "@/assets/gp/slipper-ultrasonic.jpg";
 import slipperNonWoven from "@/assets/gp/slipper-non-woven.jpg";
 import slipperNapCloth from "@/assets/gp/slipper-nap-cloth.jpg";
+import slipperWaffle from "@/assets/gp/slipper-waffle.jpg";
 import dentalKitImg from "@/assets/gp/dental-kit.png.asset.json";
 import shavingKitImg from "@/assets/gp/shaving-kit.png.asset.json";
 import vanityKitImg from "@/assets/gp/vanity-kit.png.asset.json";
-import bathHairKitImg from "@/assets/gp/bath-hair-kit.png.asset.json";
+import bathHairKitUrl from "@/assets/gp/bath-hair-kit.jpg";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import {
@@ -33,7 +34,7 @@ export function Header() {
       <header className="sticky top-0 z-40 border-b border-border bg-ivory">
         <div className="flex h-16 w-full items-center justify-between gap-4 pl-[max(1rem,env(safe-area-inset-left,0px))] pr-[max(1rem,env(safe-area-inset-right,0px))] md:h-20 md:pl-[max(2rem,env(safe-area-inset-left,0px))] md:pr-[max(2rem,env(safe-area-inset-right,0px))] lg:pl-[max(3rem,env(safe-area-inset-left,0px))] lg:pr-[max(3rem,env(safe-area-inset-right,0px))]">
           <a href="#top" aria-label="GreenPeak Transformation, back to top" className="inline-flex min-h-11 items-center">
-            <img src={logo} alt="GreenPeak Transformation" width={1000} height={162} className="h-9 w-auto md:h-12" />
+            <img src={logo} alt="GreenPeak Transformation" width={1000} height={162} className="h-7 w-auto md:h-9" />
           </a>
           <nav aria-label="Main" className="hidden lg:block">
             <ul className="flex gap-8 text-sm">
@@ -155,8 +156,8 @@ export function AmenityKits() {
     {
       name: "Bath & Hair",
       slug: "bath-hair",
-      img: bathHairKitImg.url,
-      ratio: "aspect-[3/2]",
+      img: bathHairKitUrl,
+      ratio: "aspect-square",
       specLabel: "Contents",
       spec: "Cornstarch-based shower cap, natural fiber or cotton loofah, bamboo / wood or cornstarch-based comb.",
     },
@@ -225,13 +226,13 @@ export function Slippers() {
       sole: "4 mm non-skid EVA sole.",
     },
     {
-      name: "Terry",
-      slug: "terry",
-      image: undefined, // photo to come
-      imageAlt: undefined,
-      models: "ST01, ST02",
-      upper: "Plush terry cloth, classic spa feel.",
-      sole: "Single sole with 3 mm EVA (ST01) or double sole with 3 mm EVA and 4 mm padded footbed (ST02).",
+      name: "Waffle",
+      slug: "waffle",
+      image: slipperWaffle,
+      imageAlt: "Pair of white waffle-weave slippers on a stone floor",
+      upper: "Waffle with 3 mm sponge.",
+      sole: "Double sole with 7 mm EVA and 4 mm heel.",
+      size: "29 × 11 cm",
     },
   ];
   return (
@@ -250,6 +251,7 @@ export function Slippers() {
               <h3 className="text-lg sm:text-2xl">{s.name} Slipper</h3>
               <p className="text-xs sm:text-sm"><span className="text-muted-foreground">Upper: </span>{s.upper}</p>
               <p className="text-xs sm:text-sm"><span className="text-muted-foreground">Sole: </span>{s.sole}</p>
+              {s.size && <p className="text-xs sm:text-sm"><span className="text-muted-foreground">Size: </span>{s.size}</p>}
               <p className="text-xs sm:text-sm"><span className="text-muted-foreground">Packaging: </span>{packaging}</p>
               <div className="mt-auto pt-2">
                 <CtaButton variant="quiet" track={`slipper_quotation_${s.slug}`} onClick={() => goToRequest({ mode: "hotel", need: "quotation", product: "slippers" })}>
