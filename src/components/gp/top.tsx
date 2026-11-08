@@ -232,7 +232,6 @@ export function Slippers() {
       imageAlt: "Pair of white waffle-weave slippers on a stone floor",
       upper: "Waffle with 3 mm sponge.",
       sole: "Double sole with 7 mm EVA and 4 mm heel.",
-      size: "29 × 11 cm",
     },
   ];
   return (
@@ -251,7 +250,6 @@ export function Slippers() {
               <h3 className="text-lg sm:text-2xl">{s.name} Slipper</h3>
               <p className="text-xs sm:text-sm"><span className="text-muted-foreground">Upper: </span>{s.upper}</p>
               <p className="text-xs sm:text-sm"><span className="text-muted-foreground">Sole: </span>{s.sole}</p>
-              {s.size && <p className="text-xs sm:text-sm"><span className="text-muted-foreground">Size: </span>{s.size}</p>}
               <p className="text-xs sm:text-sm"><span className="text-muted-foreground">Packaging: </span>{packaging}</p>
               <div className="mt-auto pt-2">
                 <CtaButton variant="quiet" track={`slipper_quotation_${s.slug}`} onClick={() => goToRequest({ mode: "hotel", need: "quotation", product: "slippers" })}>
