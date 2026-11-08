@@ -8,7 +8,7 @@ import slipperWaffle from "@/assets/gp/slipper-waffle.jpg";
 import dentalKitImg from "@/assets/gp/dental-kit.png.asset.json";
 import shavingKitImg from "@/assets/gp/shaving-kit.png.asset.json";
 import vanityKitImg from "@/assets/gp/vanity-kit.png.asset.json";
-import bathHairKitImg from "@/assets/gp/bath-hair-kit.png.asset.json";
+import bathHairKitUrl from "@/assets/gp/bath-hair-kit.jpg";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import {
@@ -156,8 +156,8 @@ export function AmenityKits() {
     {
       name: "Bath & Hair",
       slug: "bath-hair",
-      img: bathHairKitImg.url,
-      ratio: "aspect-[3/2]",
+      img: bathHairKitUrl,
+      ratio: "aspect-square",
       specLabel: "Contents",
       spec: "Cornstarch-based shower cap, natural fiber or cotton loofah, bamboo / wood or cornstarch-based comb.",
     },
