@@ -9,12 +9,17 @@ import dentalKitImg from "@/assets/gp/dental-kit.png.asset.json";
 import shavingKitImg from "@/assets/gp/shaving-kit.png.asset.json";
 import vanityKitImg from "@/assets/gp/vanity-kit.png.asset.json";
 import bathHairKitUrl from "@/assets/gp/bath-hair-kit.jpg";
+import orientalResidence from "@/assets/gp/clients/oriental-residence.png";
+import goldenTulip from "@/assets/gp/clients/golden-tulip.png";
+import onyxHospitality from "@/assets/gp/clients/onyx-hospitality.png";
+import accor from "@/assets/gp/clients/accor.png";
+import mGallery from "@/assets/gp/clients/m-gallery.png";
+import phuketOrchid from "@/assets/gp/clients/phuket-orchid.png";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import {
   CtaButton,
   ImageSlot,
-  NeedFromGreenpeak,
   Section,
   SectionTitle,
   goToRequest,
@@ -99,24 +104,42 @@ export function Hero() {
 }
 
 /** Looping hotel-client logo strip, above Amenity Kits.
- *  Swap the placeholder slots for real logos once Greenpeak supplies them (with permission). */
+ *  To add or change a client: drop a 3:2 PNG in src/assets/gp/clients/ and edit CLIENTS below. */
+const CLIENTS = [
+  { name: "Oriental Residence Bangkok", src: orientalResidence },
+  { name: "Golden Tulip", src: goldenTulip },
+  { name: "ONYX Hospitality Group", src: onyxHospitality },
+  { name: "Accor", src: accor },
+  { name: "M Gallery", src: mGallery },
+  { name: "Phuket Orchid Resort & Spa", src: phuketOrchid },
+];
+
 export function ProofStrip() {
-  const slots = Array.from({ length: 6 });
+  // One half of the marquee = the list twice, so it is wider than very wide screens.
+  // The track holds two identical halves, so the -50% translate loops seamlessly.
+  const half = [...CLIENTS, ...CLIENTS];
   return (
     <section aria-label="Hotel clients" className="border-b border-border py-12 md:py-16">
       <h2 className="mb-8 text-center font-sans text-2xl font-bold uppercase tracking-[0.18em] text-charcoal md:mb-12 md:text-3xl">
         Our clients
       </h2>
       <div className="marquee">
-        {/* Two identical sets so the -50% translate loops seamlessly. */}
         <ul className="marquee-track gap-4 pr-4">
-          {[...slots, ...slots].map((_, i) => (
+          {[...half, ...half].map((c, i) => (
             <li
               key={i}
-              aria-hidden={i >= slots.length}
-              className="flex aspect-[3/2] w-[160px] shrink-0 items-center justify-center rounded-md bg-slot p-2 text-center sm:w-[200px] lg:w-[240px]"
+              aria-hidden={i >= CLIENTS.length}
+              className="flex aspect-[3/2] w-[160px] shrink-0 items-center justify-center overflow-hidden rounded-md bg-white sm:w-[200px] lg:w-[240px]"
             >
-              <NeedFromGreenpeak label="hotel client logo (with permission)" />
+              <img
+                src={c.src}
+                alt={i < CLIENTS.length ? c.name : ""}
+                width={540}
+                height={360}
+                decoding="async"
+                draggable={false}
+                className="h-full w-full object-contain"
+              />
             </li>
           ))}
         </ul>
