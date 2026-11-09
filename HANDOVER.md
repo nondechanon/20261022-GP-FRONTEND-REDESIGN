@@ -1,6 +1,6 @@
-# GreenPeak Transform — Project Handover
+# GreenPeak Transformation — Project Handover
 
-Landing page for **Greenpeak Transformation Co., Ltd.**, a Bangkok-based supplier of
+Landing page for **GreenPeak Transformation Co., Ltd.**, a Bangkok-based supplier of
 sustainable guest amenities (amenity kits, slippers, CHAONA rice straws) for Thai hotels.
 Single-page marketing site with a quotation request form. **No backend exists yet** — form
 submissions and analytics are console.log stubs waiting for a real destination.
@@ -36,10 +36,10 @@ bun test           # vitest
 
 | Path | What it is |
 |---|---|
-| `src/routes/__root.tsx` | Root shell: HTML skeleton, Google Fonts (Fraunces + Inter), favicon, site-wide title/meta, error + 404 components. |
+| `src/routes/__root.tsx` | Root shell: HTML skeleton, Google Fonts (Cormorant Garamond + Montserrat + Inter), favicon, site-wide title/meta, error + 404 components. |
 | `src/routes/index.tsx` | The only page (`/`). Assembles all sections; page-level SEO title/description live here. |
 | `src/styles.css` | **Design system "Rice & Teak"**: all colors, fonts, utilities. See §4. |
-| `src/components/gp/shared.tsx` | Shared building blocks: `CtaButton`, `Section`, `SectionTitle`, `ImageSlot`, `NeedFromGreenpeak`, `trackEvent`, `goToRequest`, `LINE_URL`, `WHATSAPP_URL`, `Prefill` type. |
+| `src/components/gp/shared.tsx` | Shared building blocks: `CtaButton`, `Section`, `SectionTitle`, `ImageSlot`, `trackEvent`, `goToRequest`, `LINE_URL`, `WHATSAPP_URL`, `Prefill` type. |
 | `src/components/gp/top.tsx` | UtilityBar, Header (sticky nav + mobile bottom LINE/WhatsApp bar), Hero, AmenityKits, Slippers, Customization. |
 | `src/components/gp/middle.tsx` | Chaona (teak band), Sustainability, WhyGreenpeak (About + contact card). |
 | `src/components/gp/bottom.tsx` | RequestForm (quotation form + thank-you state), Footer. |
@@ -58,8 +58,8 @@ bun test           # vitest
    fixed bottom bar with LINE + WhatsApp buttons.
 3. **Hero** — full-bleed photo, headline "Sustainable guest amenities for Thailand's finest
    hotels.", single CTA "Get a Quotation" → scrolls to form.
-4. **ProofStrip (Hotel clients)** — looping marquee of 6 gray logo slots, each a
-   NeedFromGreenpeak chip "hotel client logo (with permission)", between Hero and Amenity Kits.
+4. **ProofStrip (Hotel clients)** — looping marquee of 6 client logos (`CLIENTS` in `top.tsx`, files in
+   `src/assets/gp/clients/`), between Hero and Amenity Kits.
    The loop is `.marquee` / `.marquee-track` in `src/styles.css` (38s linear infinite, pauses on
    hover, off under `prefers-reduced-motion`); the track holds two identical 6-slot sets so the
    -50% shift is seamless. Swap the slots for real logos once Greenpeak supplies them.
@@ -92,10 +92,10 @@ bun test           # vitest
 All colors/fonts/shadows are CSS custom properties in `src/styles.css` — **never hardcode
 hex colors or `text-white`/`bg-black` in components**; use the tokens.
 
-- Fonts: **Fraunces** (display/headings), **Inter** (body). Loaded via `<link>` in `__root.tsx`.
+- Fonts (from the logo): **Cormorant Garamond** (main titles, h1/h2, `font-display`), **Montserrat** (2nd titles h3/h4, eyebrows, nav, buttons, form labels, `font-heading`), **Inter** (body copy). Loaded via `<link>` in `__root.tsx`.
 - Tokens: `--ivory` (page bg), `--teak` (primary/headings/footer-dark), `--terracotta`
-  (primary CTA buttons), `--charcoal` (text), `--celadon`, `--straw`, `--mist`, `--chip`
-  (yellow placeholder chip), `--slot` (gray image placeholder).
+  (primary CTA buttons), `--charcoal` (text), `--celadon`, `--straw`, `--mist`,
+  `--slot` (gray image placeholder).
 - Utilities: `.eyebrow`, `.container-gp`, `.hero-scrim`, `.reveal` (IntersectionObserver
   fade-in, respects `prefers-reduced-motion`).
 - Buttons: use `CtaButton` with a `variant` (`primary` = terracotta, `secondary`,
@@ -110,8 +110,7 @@ hex colors or `text-white`/`bg-black` in components**; use the tokens.
 - **`trackEvent(name)`**: console.log stub — swap in a real analytics call here.
 - **`submitLead(payload)`** (bottom.tsx): console.log stub — **the form goes nowhere.**
   This is the main unfinished piece; wire it to email/CRM/backend.
-- **`NeedFromGreenpeak`** yellow chips: visible markers for content still needed from the
-  client. `rg NeedFromGreenpeak src` lists them all.
+- The yellow `NeedFromGreenpeak` placeholder chips have been removed from the site.
 - **`ImageSlot`**: renders a gray placeholder until given a `src`. Kit and slipper photos
   are still placeholders.
 
@@ -148,6 +147,6 @@ hex colors or `text-white`/`bg-black` in components**; use the tokens.
 
 1. Wire `submitLead` to an email service or backend, then remove the console stub.
 2. Replace `trackEvent` with real analytics.
-3. Collect the §8 content and delete each `NeedFromGreenpeak` chip as it's filled.
+3. Collect the §8 content (company address, registration / VAT number, etc.) and add it where needed.
 4. Add real kit/slipper photos to `src/assets/gp/` and pass them to the `ImageSlot`s.
 5. Run `bun test` before shipping changes.

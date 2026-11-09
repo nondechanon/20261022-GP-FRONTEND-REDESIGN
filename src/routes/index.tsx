@@ -4,7 +4,7 @@ import { Header, Hero, ProofStrip, AmenityKits, Slippers, Customization } from "
 import { Chaona, Sustainability, WhyGreenpeak } from "@/components/gp/middle";
 import { RequestForm, Footer } from "@/components/gp/bottom";
 
-const TITLE = "GreenPeak Transform | Sustainable Guest Amenities for Thai Hotels";
+const TITLE = "GreenPeak Transformation | Sustainable Guest Amenities for Thai Hotels";
 const DESC =
   "Eco hotel amenities in Thailand: sustainable amenity kits, slippers and CHAONA rice straws, custom-branded with your logo and supplied from Bangkok.";
 

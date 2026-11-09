@@ -18,20 +18,6 @@ export function goToRequest(prefill: Prefill = {}) {
   document.getElementById("request")?.scrollIntoView({ behavior: "smooth" });
 }
 
-/** Placeholder chip for missing client content. Search "NeedFromGreenpeak" to find them all. */
-export function NeedFromGreenpeak({ label, className }: { label: string; className?: string }) {
-  return (
-    <span
-      className={cn(
-        "inline-block rounded-sm bg-chip px-2 py-0.5 text-[0.68rem] font-semibold uppercase tracking-wide text-charcoal",
-        className,
-      )}
-    >
-      NEED FROM GREENPEAK: {label}
-    </span>
-  );
-}
-
 /** Swappable image slot. Pass `src` to replace the gray placeholder with a real photo. */
 export function ImageSlot({
   caption,
@@ -96,7 +82,7 @@ export function CtaButton({
         onClick?.(e);
       }}
       className={cn(
-        "inline-flex items-center justify-center gap-2 rounded-md px-5 py-3 text-sm transition-colors duration-300 disabled:cursor-not-allowed disabled:opacity-50",
+        "inline-flex items-center justify-center gap-2 rounded-md px-5 py-3 font-heading text-sm font-medium tracking-[0.02em] transition-colors duration-300 disabled:cursor-not-allowed disabled:opacity-50",
         ctaStyles[variant],
         className,
       )}
