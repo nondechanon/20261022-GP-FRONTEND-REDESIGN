@@ -42,7 +42,7 @@ export function Header() {
             <img src={logo} alt="GreenPeak Transformation" width={1000} height={162} className="h-7 w-auto md:h-9" />
           </a>
           <nav aria-label="Main" className="hidden lg:block">
-            <ul className="flex gap-8 text-sm">
+            <ul className="flex gap-8 font-heading text-sm font-medium">
               {NAV.map((n) => (
                 <li key={n.href}><a href={n.href} className="hover:text-teak hover:underline underline-offset-4">{n.label}</a></li>
               ))}
@@ -62,7 +62,7 @@ export function Header() {
         </div>
         {open && (
           <nav aria-label="Mobile" className="border-t border-border lg:hidden">
-            <ul className="container-gp flex flex-col py-2">
+            <ul className="container-gp flex flex-col py-2 font-heading text-sm font-medium">
               {NAV.map((n) => (
                 <li key={n.href}>
                   <a href={n.href} onClick={() => setOpen(false)} className="block border-b border-border py-3 last:border-0">{n.label}</a>
@@ -120,7 +120,7 @@ export function ProofStrip() {
   const half = [...CLIENTS, ...CLIENTS];
   return (
     <section aria-label="Hotel clients" className="border-b border-border py-12 md:py-16">
-      <h2 className="mb-8 text-center font-sans text-2xl font-bold uppercase tracking-[0.18em] text-charcoal md:mb-12 md:text-3xl">
+      <h2 className="mb-8 text-center font-heading text-2xl font-bold uppercase tracking-[0.18em] text-charcoal md:mb-12 md:text-3xl">
         Our clients
       </h2>
       <div className="marquee">
@@ -191,7 +191,7 @@ export function AmenityKits() {
       <div className="grid grid-cols-2 gap-3 sm:gap-6 lg:grid-cols-4">
         {kits.map((k) => (
           <article key={k.slug} className="flex flex-col rounded-md border border-border bg-card p-2 sm:p-3 transition-colors duration-300 hover:border-charcoal">
-            <ImageSlot caption={`IMAGE: ${k.name} kit`} alt={`GreenPeak Transform ${k.name.toLowerCase()} kit`} src={k.img} ratio={k.ratio} />
+            <ImageSlot caption={`IMAGE: ${k.name} kit`} alt={`GreenPeak Transformation ${k.name.toLowerCase()} kit`} src={k.img} ratio={k.ratio} />
             <div className="flex flex-1 flex-col gap-2 p-1 pt-3 sm:p-2 sm:pt-5">
               <h3 className="text-lg sm:text-2xl">{k.name} Kit</h3>
               <p className="text-xs sm:text-sm"><span className="text-muted-foreground">{k.specLabel}: </span>{k.spec}</p>
@@ -267,7 +267,7 @@ export function Slippers() {
               src={s.image}
               ratio="aspect-[4/3]"
               caption={`IMAGE: ${s.name} slipper`}
-              alt={s.imageAlt ?? `GreenPeak Transform ${s.name.toLowerCase()} slipper`}
+              alt={s.imageAlt ?? `GreenPeak Transformation ${s.name.toLowerCase()} slipper`}
             />
             <div className="flex flex-1 flex-col gap-2 p-1 pt-3 sm:p-2 sm:pt-5">
               <h3 className="text-lg sm:text-2xl">{s.name} Slipper</h3>

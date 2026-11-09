@@ -4,7 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { hotelSchema } from "./request-schema";
 import type { z } from "zod";
 import { toast } from "sonner";
-import { CtaButton, NeedFromGreenpeak, Section, SectionTitle, trackEvent, type Prefill, LINE_URL } from "./shared";
+import { CtaButton, Section, SectionTitle, trackEvent, type Prefill, LINE_URL } from "./shared";
 
 type HotelValues = z.infer<typeof hotelSchema>;
 
@@ -21,7 +21,7 @@ const choiceLabelCls = "flex min-h-11 items-center gap-3 lg:min-h-0 lg:gap-2";
 function Field({ label, error, children, optional }: { label: string; error?: string | undefined; children: React.ReactNode; optional?: boolean }) {
   return (
     <label className="block">
-      <span className="mb-1.5 block text-sm font-medium">
+      <span className="mb-1.5 block font-heading text-sm font-medium">
         {label} {optional && <span className="font-normal text-muted-foreground">(optional)</span>}
       </span>
       {children}
@@ -72,7 +72,7 @@ function HotelForm({ prefill, onDone }: { prefill: Prefill; onDone: () => void }
       <Field label="Phone" error={e.phone?.message}><input type="tel" className={inputCls} autoComplete="tel" {...f.register("phone")} /></Field>
       <Field label="Number of rooms" optional><input inputMode="numeric" className={inputCls} {...f.register("rooms")} /></Field>
       <fieldset className="md:col-span-2">
-        <legend className="mb-2 text-sm font-medium">Products</legend>
+        <legend className="mb-2 font-heading text-sm font-medium">Products</legend>
         <div className="flex flex-wrap gap-x-6 gap-y-2 text-sm">
           {[["amenity", "Amenity kits"], ["slippers", "Slippers"], ["chaona", "CHAONA"]].map(([v, l]) => (
             <label key={v} className={choiceLabelCls}><input type="checkbox" value={v} className={checkCls} {...f.register("products")} />{l}</label>
@@ -80,7 +80,7 @@ function HotelForm({ prefill, onDone }: { prefill: Prefill; onDone: () => void }
         </div>
       </fieldset>
       <fieldset className="md:col-span-2">
-        <legend className="mb-2 text-sm font-medium">I need</legend>
+        <legend className="mb-2 font-heading text-sm font-medium">I need</legend>
         <div className="flex flex-wrap gap-x-6 gap-y-2 text-sm">
           {[["quotation", "Quotation"], ["callback", "Call back"]].map(([v, l]) => (
             <label key={v} className={choiceLabelCls}><input type="radio" value={v} className={checkCls} {...f.register("need")} />{l}</label>
@@ -116,7 +116,7 @@ export function RequestForm() {
         {done ? (
           <div className="rounded-md border border-border bg-card p-8" role="status">
             <h3 className="text-3xl">Thank you. We have your request.</h3>
-            <p className="mt-3 text-sm text-muted-foreground">We will be in touch: <NeedFromGreenpeak label="response time, e.g. within 1 business day" /></p>
+            <p className="mt-3 text-sm text-muted-foreground">We will be in touch soon.</p>
             <CtaButton variant="quiet" track="send_another_request" onClick={() => setDone(false)} className="mt-6">Send another request</CtaButton>
           </div>
         ) : (
@@ -132,15 +132,11 @@ export function Footer() {
     <footer className="bg-charcoal py-16 text-ivory lg:pb-12">
       <div className="container-gp grid gap-10 md:grid-cols-3">
         <div>
-          <p className="font-display text-2xl">GreenPeak Transform</p>
-          {/* Confirm brand-name spelling of the legal entity with the client. */}
-          <p className="mt-4 text-sm">Greenpeak Transformation Co., Ltd.</p>
-          <div className="mt-2"><NeedFromGreenpeak label="registration / VAT number" /></div>
+          <p className="font-display text-3xl font-semibold leading-tight">GreenPeak Transformation Co., Ltd.</p>
         </div>
         <div className="space-y-2 text-sm">
           <p>Bangkok, Thailand</p>
-          <NeedFromGreenpeak label="full address" />
-          <p><a href="mailto:Pharunyu.l@gmail.com" className="inline-flex min-h-11 items-center break-all underline-offset-4 hover:underline">Pharunyu.l@gmail.com</a></p>
+          <p><a href="mailto:hello@greenpeaktransform.com" className="inline-flex min-h-11 items-center break-all underline-offset-4 hover:underline">hello@greenpeaktransform.com</a></p>
         </div>
         <ul className="text-sm">
           <li><a href={LINE_URL} target="_blank" rel="noreferrer" onClick={() => trackEvent("footer_line")} className="inline-flex min-h-11 min-w-11 items-center hover:underline">LINE</a></li>
@@ -150,7 +146,7 @@ export function Footer() {
         </ul>
       </div>
       <div className="container-gp mt-12 border-t border-ivory/20 pt-6 text-xs text-ivory/70">
-        &copy; {new Date().getFullYear()} Greenpeak Transformation Co., Ltd.
+        &copy; {new Date().getFullYear()} GreenPeak Transformation Co., Ltd.
       </div>
     </footer>
   );
