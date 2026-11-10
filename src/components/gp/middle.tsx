@@ -1,5 +1,7 @@
 import straws from "@/assets/gp/sustainabletableware.jpg";
-import leaves from "@/assets/gp/sustainability.jpg";
+import iso22000 from "@/assets/gp/certs/iso-22000.png";
+import gmp from "@/assets/gp/certs/gmp.png";
+import haccp from "@/assets/gp/certs/haccp.png";
 import { ImageSlot, Section, SectionTitle } from "./shared";
 
 export function Chaona() {
@@ -24,24 +26,42 @@ export function Chaona() {
   );
 }
 
+/** Standards held by GreenPeak's manufacturing partners. To change a badge, replace the file in src/assets/gp/certs/. */
+const STANDARDS = [
+  { name: "ISO 22000:2018 Certified Company", src: iso22000 },
+  { name: "GMP Certified", src: gmp },
+  { name: "HACCP Food Safety System Certified", src: haccp },
+];
+
 export function Sustainability() {
   return (
     <Section id="sustainability" label="Sustainability">
-      <div className="grid items-center gap-12 lg:grid-cols-2">
-        <div>
-          <SectionTitle title="Sustainability" />
-          <p className="max-w-xl text-base leading-relaxed text-foreground/80 md:text-lg">
-            At GreenPeak, sustainability is the foundation of everything we create. We bridge the gap between luxury guest experiences and environmental responsibility by engineering amenities crafted entirely from rapidly renewable, plant-based materials. From non-toxic soy inks to zero-plastic packaging, every product in our portfolio is designed to reduce landfill reliance, conserve natural resources, and empower hotel partners to lead the transition toward conscious hospitality.
-          </p>
-          {/* Certificate logos go here (row of badges under the paragraph). */}
-        </div>
-        <ImageSlot
-          src={leaves}
-          ratio="aspect-[4/5]"
-          caption="IMAGE: eucalyptus branch"
-          alt="Eucalyptus branch against a white background"
-          className="[&_img]:object-[50%_85%]"
-        />
+      <div className="max-w-3xl">
+        <SectionTitle title="Sustainability" />
+        <p className="text-base leading-relaxed text-foreground/80 md:text-lg">
+          At GreenPeak, sustainability is the foundation of everything we create. We bridge the gap between luxury guest experiences and environmental responsibility by engineering amenities crafted entirely from rapidly renewable, plant-based materials. From non-toxic soy inks to zero-plastic packaging, every product in our portfolio is designed to reduce landfill reliance, conserve natural resources, and empower hotel partners to lead the transition toward conscious hospitality.
+        </p>
+        <p className="mt-6 text-base leading-relaxed text-foreground/80 md:text-lg">
+          We collaborate with manufacturing partners that maintain recognised quality and food safety management standards.
+        </p>
+        <ul
+          aria-label="Quality and food safety standards maintained by our manufacturing partners"
+          className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-6 md:mt-14 md:gap-x-12"
+        >
+          {STANDARDS.map((c) => (
+            <li key={c.name}>
+              <img
+                src={c.src}
+                alt={c.name}
+                width={300}
+                height={300}
+                decoding="async"
+                draggable={false}
+                className="h-24 w-24 object-contain mix-blend-multiply sm:h-28 sm:w-28 md:h-32 md:w-32"
+              />
+            </li>
+          ))}
+        </ul>
       </div>
     </Section>
   );
