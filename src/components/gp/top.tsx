@@ -29,7 +29,7 @@ const NAV = [
   { label: "Amenity", href: "#amenities" },
   { label: "CHAONA", href: "#chaona" },
   { label: "Sustainability", href: "#sustainability" },
-  { label: "About\n", href: "#about" },
+  { label: "About Us", href: "#about" },
 ];
 
 export function Header() {
@@ -44,7 +44,7 @@ export function Header() {
           <nav aria-label="Main" className="hidden lg:block">
             <ul className="flex gap-8 font-heading text-sm font-medium">
               {NAV.map((n) => (
-                <li key={n.href}><a href={n.href} className="hover:text-teak hover:underline underline-offset-4">{n.label}</a></li>
+                <li key={n.href}><a href={n.href} className="whitespace-nowrap hover:text-teak hover:underline underline-offset-4">{n.label}</a></li>
               ))}
             </ul>
           </nav>
