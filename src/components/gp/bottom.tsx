@@ -5,6 +5,7 @@ import { hotelSchema } from "./request-schema";
 import type { z } from "zod";
 import { toast } from "sonner";
 import { CtaButton, Section, SectionTitle, trackEvent, type Prefill, LINE_URL } from "./shared";
+import { cn } from "@/lib/utils";
 
 type HotelValues = z.infer<typeof hotelSchema>;
 
@@ -127,26 +128,37 @@ export function RequestForm() {
   );
 }
 
+const footerLink = "inline-flex min-h-11 items-center underline-offset-4 hover:underline";
+const footerLabel = "eyebrow mb-3 text-ivory/60";
+
 export function Footer() {
   return (
     <footer className="bg-charcoal py-16 text-ivory lg:pb-12">
-      <div className="container-gp grid gap-10 md:grid-cols-3">
+      <div className="container-gp grid items-start gap-x-12 gap-y-10 md:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr]">
+        <div className="md:col-span-2 lg:col-span-1">
+          <p className={footerLabel}>Company</p>
+          <p className="font-display text-3xl font-semibold leading-tight">GreenPeak Transformation <span className="whitespace-nowrap">Co., Ltd.</span></p>
+        </div>
         <div>
-          <p className="font-display text-3xl font-semibold leading-tight">GreenPeak Transformation Co., Ltd.</p>
+          <p className={footerLabel}>Contact</p>
+          <ul className="text-sm">
+            <li className="flex min-h-11 items-center">Bangkok, Thailand</li>
+            <li><a href="mailto:hello@greenpeaktransform.com" className={cn(footerLink, "break-words")}>hello@greenpeaktransform.com</a></li>
+          </ul>
         </div>
-        <div className="space-y-2 text-sm">
-          <p>Bangkok, Thailand</p>
-          <p><a href="mailto:hello@greenpeaktransform.com" className="inline-flex min-h-11 items-center break-all underline-offset-4 hover:underline">hello@greenpeaktransform.com</a></p>
+        <div>
+          <p className={footerLabel}>Links</p>
+          <ul className="text-sm">
+            <li><a href={LINE_URL} target="_blank" rel="noreferrer" onClick={() => trackEvent("footer_line")} className={footerLink}>LINE</a></li>
+            <li><a href="https://greenpeaktransform.com/partnership/" target="_blank" rel="noreferrer" className={footerLink}>GeoAsia Initiative</a></li>
+            <li><a href="#" className={footerLink}>Privacy notice (Thai PDPA)</a></li>
+          </ul>
         </div>
-        <ul className="text-sm">
-          <li><a href={LINE_URL} target="_blank" rel="noreferrer" onClick={() => trackEvent("footer_line")} className="inline-flex min-h-11 min-w-11 items-center hover:underline">LINE</a></li>
-          <li><a href="https://www.linkedin.com/" target="_blank" rel="noreferrer" className="inline-flex min-h-11 min-w-11 items-center hover:underline">LinkedIn</a></li>
-          <li><a href="https://greenpeaktransform.com/partnership/" target="_blank" rel="noreferrer" className="inline-flex min-h-11 min-w-11 items-center hover:underline">GeoAsia Initiative</a></li>
-          <li><a href="#" className="inline-flex min-h-11 min-w-11 items-center hover:underline">Privacy notice (Thai PDPA)</a></li>
-        </ul>
       </div>
-      <div className="container-gp mt-12 border-t border-ivory/20 pt-6 text-xs text-ivory/70">
-        &copy; {new Date().getFullYear()} GreenPeak Transformation Co., Ltd.
+      <div className="container-gp mt-12">
+        <div className="border-t border-ivory/20 pt-6 text-xs text-ivory/70">
+          &copy; {new Date().getFullYear()} GreenPeak Transformation Co., Ltd.
+        </div>
       </div>
     </footer>
   );

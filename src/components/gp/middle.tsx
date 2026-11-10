@@ -76,10 +76,7 @@ export function WhyGreenpeak() {
           GreenPeak Transformation supplies hotel amenities and guest essentials to hotels, resorts, and hospitality businesses. Our portfolio includes hotel slippers, personal-care amenities, and CHAONA rice straws — our own Thai brand offering an alternative to conventional plastic drinking straws. By combining carefully selected products with responsive communication, clear quotations, and personalized service, we help hospitality partners find practical sourcing solutions tailored to their needs.
         </p>
         <hr className="my-12 border-border md:my-16" />
-        <div className="mb-10 md:mb-14">
-          <h3 className="text-3xl md:text-4xl">Our Foundation</h3>
-          <p className="mt-4 max-w-xl text-base text-muted-foreground md:text-lg">Built on more than 20 Years of Experience</p>
-        </div>
+        <SectionTitle title="Our Foundation" subline="Built on more than 20 Years of Experience" />
         <p className="text-base leading-relaxed text-foreground/80 md:text-lg">
           With a business heritage dating back to 2001, our foundation is in Business-to-Government (B2G) operations, specializing in IT hardware supply and installation for government and institutional customers. This experience has shaped our understanding of business supply, project coordination, and customer requirements. Today, GreenPeak Transformation builds on this foundation to serve the hospitality industry with practical product solutions and personalized service.
         </p>
