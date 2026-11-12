@@ -29,7 +29,8 @@ const NAV = [
   { label: "Amenity", href: "/#amenities" },
   { label: "CHAONA", href: "/#chaona" },
   { label: "Sustainability", href: "/#sustainability" },
-  { label: "About Us", href: "/#about" },
+  { label: "About", href: "/#about" },
+  { label: "Contact", href: "/#request" },
 ];
 
 export function Header() {
