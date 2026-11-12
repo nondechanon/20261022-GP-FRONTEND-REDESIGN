@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -10,9 +10,25 @@ import { cn } from "@/lib/utils";
 
 type QuoteValues = z.infer<typeof quoteSchema>;
 
-/** Submit handler. Later: POST to a backend or email service here. */
-async function submitLead(payload: Record<string, unknown>) {
-  console.log("[lead]", payload);
+const FORMSPREE_URL = "https://formspree.io/f/mpqkyqoo";
+
+/** Sends the quotation request to Formspree. Throws if it could not be delivered. */
+async function submitLead(values: QuoteValues) {
+  const res = await fetch(FORMSPREE_URL, {
+    method: "POST",
+    headers: { "Content-Type": "application/json", Accept: "application/json" },
+    body: JSON.stringify({
+      _subject: `Quotation request from ${values.company}`,
+      name: values.name,
+      company: values.company,
+      email: values.email,
+      phone: values.phone,
+      notes: values.notes ?? "",
+      consent: "Agreed to the Privacy Notice",
+      consent_at: new Date().toISOString(),
+    }),
+  });
+  if (!res.ok) throw new Error(`Formspree responded ${res.status}`);
 }
 
 // Mobile-first: 16px text on phones stops iOS Safari from zooming on focus; 48px tall touch targets.
@@ -45,14 +61,24 @@ function ConsentBox({ reg, error }: { reg: object; error?: string | undefined })
 
 function QuoteForm({ onDone }: { onDone: () => void }) {
   const f = useForm<QuoteValues>({ resolver: zodResolver(quoteSchema) });
+  const honeypot = useRef<HTMLInputElement>(null);
   const e = f.formState.errors;
   return (
     <form
       noValidate
       onSubmit={f.handleSubmit(async (v) => {
         trackEvent("form_submit_quote");
-        await submitLead({ route: "quote", ...v });
+        // Honeypot: real visitors never see or fill this field; bots do. Pretend success.
+        if (honeypot.current?.value) return onDone();
+        try {
+          await submitLead(v);
+        } catch (err) {
+          console.error(err);
+          toast.error("Sorry, we could not send your request. Please try again or email hello@greenpeaktransform.com.");
+          return;
+        }
         toast.success("Request received. Thank you.");
+        f.reset();
         onDone();
       })}
       className="grid gap-5 md:grid-cols-2"
@@ -62,6 +88,7 @@ function QuoteForm({ onDone }: { onDone: () => void }) {
       <Field label="Email" error={e.email?.message}><input type="email" className={inputCls} autoComplete="email" {...f.register("email")} /></Field>
       <Field label="Phone" error={e.phone?.message}><input type="tel" className={inputCls} autoComplete="tel" {...f.register("phone")} /></Field>
       <div className="md:col-span-2"><Field label="Additional notes" optional><textarea rows={4} className={inputCls} {...f.register("notes")} /></Field></div>
+      <input ref={honeypot} type="text" name="company_website" tabIndex={-1} autoComplete="off" aria-hidden="true" className="absolute left-[-9999px] h-0 w-0 opacity-0" />
       <div className="md:col-span-2"><ConsentBox reg={f.register("consent")} error={e.consent?.message} /></div>
       <div className="md:col-span-2"><CtaButton type="submit" track="form_submit_click_quote" disabled={f.formState.isSubmitting}>Submit request</CtaButton></div>
     </form>

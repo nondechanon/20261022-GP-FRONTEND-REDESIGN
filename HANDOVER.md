@@ -108,8 +108,8 @@ hex colors or `text-white`/`bg-black` in components**; use the tokens.
   longer has product / request-type fields, so the `Prefill` values (`need`, `product`) are
   accepted but not used.
 - **`trackEvent(name)`**: console.log stub — swap in a real analytics call here.
-- **`submitLead(payload)`** (bottom.tsx): console.log stub — **the form goes nowhere.**
-  This is the main unfinished piece; wire it to email/CRM/backend.
+- **`submitLead(values)`** (bottom.tsx): POSTs the quotation request as JSON to Formspree
+  (`https://formspree.io/f/mpqkyqoo`). On failure the form stays filled and shows an error toast.
 - The yellow `NeedFromGreenpeak` placeholder chips have been removed from the site.
 - **`ImageSlot`**: renders a gray placeholder until given a `src`. Kit and slipper photos
   are still placeholders.
@@ -144,7 +144,7 @@ hex colors or `text-white`/`bg-black` in components**; use the tokens.
 
 ## 9. Suggested next steps for the new owner
 
-1. Wire `submitLead` to an email service or backend, then remove the console stub.
+1. (Done) Form is wired to Formspree. Check Formspree dashboard settings (notifications, spam filter, allowed domains).
 2. Replace `trackEvent` with real analytics.
 3. Collect the §8 content (company address, registration / VAT number, etc.) and add it where needed.
 4. Add real kit/slipper photos to `src/assets/gp/` and pass them to the `ImageSlot`s.
