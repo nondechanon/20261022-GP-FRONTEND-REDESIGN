@@ -141,5 +141,5 @@ export function SectionTitle({ eyebrow, title, subline, className }: { eyebrow?:
   );
 }
 
-export const LINE_URL = "https://line.me/R/ti/p/@greenpeak-placeholder";
+export const LINE_URL = "https://lin.ee/Y0hbMOAc";
 export const WHATSAPP_URL = "https://wa.me/66994246141";
