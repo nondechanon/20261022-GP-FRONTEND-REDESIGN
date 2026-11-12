@@ -71,7 +71,7 @@ export function Sustainability() {
 export function WhyGreenpeak() {
   return (
     <Section id="about" className="border-t border-border bg-card" label="About Us">
-      <div className="grid items-start gap-12 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,0.9fr)] lg:gap-24">
+      <div className="grid items-start gap-12 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,0.9fr)] lg:items-stretch lg:gap-24">
         <div>
           <SectionTitle title="About Us" subline="Your Partner in Hotel Amenities Supply" />
           <p className="text-base leading-relaxed text-foreground/80 md:text-lg">
@@ -85,8 +85,9 @@ export function WhyGreenpeak() {
         </div>
         <ImageSlot
           src={aboutImg}
+          caption="IMAGE: delivery truck and pallet at a warehouse loading dock"
           alt="Cartons loaded on a delivery truck and pallet at a warehouse loading dock"
-          ratio="aspect-[9/16]"
+          ratio="aspect-[9/16] lg:aspect-auto"
           className="mx-auto w-full sm:max-w-sm lg:max-w-none"
         />
       </div>
