@@ -71,7 +71,7 @@ export function Sustainability() {
 export function WhyGreenpeak() {
   return (
     <Section id="about" className="border-t border-border bg-card" label="About Us">
-      <div className="grid items-start gap-12 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)] lg:gap-16">
+      <div className="grid items-start gap-12 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,0.9fr)] lg:gap-24">
         <div>
           <SectionTitle title="About Us" subline="Your Partner in Hotel Amenities Supply" />
           <p className="text-base leading-relaxed text-foreground/80 md:text-lg">
