@@ -87,7 +87,7 @@ export function WhyGreenpeak() {
           src={aboutImg}
           alt="Cartons loaded on a delivery truck and pallet at a warehouse loading dock"
           ratio="aspect-[9/16]"
-          className="mx-auto w-full sm:max-w-sm lg:sticky lg:top-28 lg:max-w-none"
+          className="mx-auto w-full sm:max-w-sm lg:max-w-none"
         />
       </div>
     </Section>
