@@ -25,12 +25,15 @@ import {
   goToRequest,
 } from "./shared";
 
+// Site root without trailing slash: "" normally, "/<repo>" on GitHub Pages.
+const BASE = import.meta.env.BASE_URL.replace(/\/$/, "");
+
 const NAV = [
-  { label: "Amenity", href: "/#amenities" },
-  { label: "CHAONA", href: "/#chaona" },
-  { label: "Sustainability", href: "/#sustainability" },
-  { label: "About", href: "/#about" },
-  { label: "Contact", href: "/#request" },
+  { label: "Amenity", href: `${BASE}/#amenities` },
+  { label: "CHAONA", href: `${BASE}/#chaona` },
+  { label: "Sustainability", href: `${BASE}/#sustainability` },
+  { label: "About", href: `${BASE}/#about` },
+  { label: "Contact", href: `${BASE}/#request` },
 ];
 
 export function Header() {
@@ -39,7 +42,7 @@ export function Header() {
     <>
       <header className="sticky top-0 z-40 border-b border-border bg-ivory">
         <div className="flex h-16 w-full items-center justify-between gap-4 pl-[max(1rem,env(safe-area-inset-left,0px))] pr-[max(1rem,env(safe-area-inset-right,0px))] md:h-20 md:pl-[max(2rem,env(safe-area-inset-left,0px))] md:pr-[max(2rem,env(safe-area-inset-right,0px))] lg:pl-[max(3rem,env(safe-area-inset-left,0px))] lg:pr-[max(3rem,env(safe-area-inset-right,0px))]">
-          <a href="/" aria-label="GreenPeak Transformation, home" className="inline-flex min-h-11 items-center">
+          <a href={`${BASE}/`} aria-label="GreenPeak Transformation, home" className="inline-flex min-h-11 items-center">
             <img src={logo} alt="GreenPeak Transformation" width={1000} height={162} className="h-7 w-auto md:h-9" />
           </a>
           <nav aria-label="Main" className="hidden lg:block">

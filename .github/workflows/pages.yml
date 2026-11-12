@@ -26,6 +26,8 @@ jobs:
       - run: npm install --legacy-peer-deps --no-package-lock --registry=https://registry.npmjs.org
       - run: npm test
       - run: npx vite build --config vite.config.pages.ts
+        env:
+          PAGES_BASE: /${{ github.event.repository.name }}/
       - name: Fail if any Lovable-hosted asset URL is left in the build
         run: |
           if grep -rIl "__l5e" dist/client; then

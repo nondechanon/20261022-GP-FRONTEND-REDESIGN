@@ -153,5 +153,5 @@ hex colors or `text-white`/`bg-black` in components**; use the tokens.
 
 ## Deploying to GitHub Pages
 - `.github/workflows/pages.yml` builds a static, prerendered site with `vite.config.pages.ts` (separate from the Lovable `vite.config.ts`, which stays untouched) and publishes `dist/client`.
-- Repo Settings -> Pages -> Source must be **GitHub Actions**. Set the custom domain there. Pages on a private repo needs a paid GitHub plan.
+- Repo Settings -> Pages -> Source must be **GitHub Actions**. Default URL is `https://<owner>.github.io/<repo>/`; the workflow passes `PAGES_BASE=/<repo>/` so asset and nav links work under that sub-path (the router `basepath` and the header links read `import.meta.env.BASE_URL`, which is `/` on Lovable). For a custom domain, set it in Pages settings and change `PAGES_BASE` to `/` in the workflow. Pages on a private repo needs a paid GitHub plan.
 - The build fails on purpose if any `/__l5e/` (Lovable-hosted) image URL remains. Those `*.asset.json` images only exist on Lovable's servers; commit the real image files and import them directly.
