@@ -2,13 +2,13 @@ import { useEffect, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { hotelSchema } from "./request-schema";
+import { quoteSchema } from "./request-schema";
 import type { z } from "zod";
 import { toast } from "sonner";
-import { CtaButton, Section, SectionTitle, trackEvent, type Prefill, LINE_URL } from "./shared";
+import { CtaButton, Section, SectionTitle, trackEvent, LINE_URL } from "./shared";
 import { cn } from "@/lib/utils";
 
-type HotelValues = z.infer<typeof hotelSchema>;
+type QuoteValues = z.infer<typeof quoteSchema>;
 
 /** Submit handler. Later: POST to a backend or email service here. */
 async function submitLead(payload: Record<string, unknown>) {
@@ -18,7 +18,6 @@ async function submitLead(payload: Record<string, unknown>) {
 // Mobile-first: 16px text on phones stops iOS Safari from zooming on focus; 48px tall touch targets.
 const inputCls = "w-full rounded-md border border-input bg-card px-3 py-3 text-base lg:py-2.5 lg:text-sm";
 const checkCls = "h-5 w-5 shrink-0 accent-teak lg:h-4 lg:w-4";
-const choiceLabelCls = "flex min-h-11 items-center gap-3 lg:min-h-0 lg:gap-2";
 
 function Field({ label, error, children, optional }: { label: string; error?: string | undefined; children: React.ReactNode; optional?: boolean }) {
   return (
@@ -44,69 +43,37 @@ function ConsentBox({ reg, error }: { reg: object; error?: string | undefined })
   );
 }
 
-function HotelForm({ prefill, onDone }: { prefill: Prefill; onDone: () => void }) {
-  const f = useForm<HotelValues>({
-    resolver: zodResolver(hotelSchema),
-    defaultValues: { products: [], need: "quotation" },
-  });
-  useEffect(() => {
-    if (prefill.need) f.setValue("need", prefill.need);
-    if (prefill.product) {
-      const cur = f.getValues("products") ?? [];
-      if (!cur.includes(prefill.product)) f.setValue("products", [...cur, prefill.product]);
-    }
-  }, [prefill, f]);
+function QuoteForm({ onDone }: { onDone: () => void }) {
+  const f = useForm<QuoteValues>({ resolver: zodResolver(quoteSchema) });
   const e = f.formState.errors;
   return (
     <form
       noValidate
       onSubmit={f.handleSubmit(async (v) => {
-        trackEvent("form_submit_hotel");
-        await submitLead({ route: "hotel", ...v });
+        trackEvent("form_submit_quote");
+        await submitLead({ route: "quote", ...v });
         toast.success("Request received. Thank you.");
         onDone();
       })}
       className="grid gap-5 md:grid-cols-2"
     >
-      <Field label="Full name" error={e.fullName?.message}><input className={inputCls} autoComplete="name" {...f.register("fullName")} /></Field>
-      <Field label="Hotel" error={e.hotel?.message}><input className={inputCls} autoComplete="organization" {...f.register("hotel")} /></Field>
+      <Field label="Name" error={e.name?.message}><input className={inputCls} autoComplete="name" {...f.register("name")} /></Field>
+      <Field label="Company name" error={e.company?.message}><input className={inputCls} autoComplete="organization" {...f.register("company")} /></Field>
       <Field label="Email" error={e.email?.message}><input type="email" className={inputCls} autoComplete="email" {...f.register("email")} /></Field>
       <Field label="Phone" error={e.phone?.message}><input type="tel" className={inputCls} autoComplete="tel" {...f.register("phone")} /></Field>
-      <Field label="Number of rooms" optional><input inputMode="numeric" className={inputCls} {...f.register("rooms")} /></Field>
-      <fieldset className="md:col-span-2">
-        <legend className="mb-2 font-heading text-sm font-medium">Products</legend>
-        <div className="flex flex-wrap gap-x-6 gap-y-2 text-sm">
-          {[["amenity", "Amenity kits"], ["slippers", "Slippers"], ["chaona", "CHAONA"]].map(([v, l]) => (
-            <label key={v} className={choiceLabelCls}><input type="checkbox" value={v} className={checkCls} {...f.register("products")} />{l}</label>
-          ))}
-        </div>
-      </fieldset>
-      <fieldset className="md:col-span-2">
-        <legend className="mb-2 font-heading text-sm font-medium">I need</legend>
-        <div className="flex flex-wrap gap-x-6 gap-y-2 text-sm">
-          {[["quotation", "Quotation"], ["callback", "Call back"]].map(([v, l]) => (
-            <label key={v} className={choiceLabelCls}><input type="radio" value={v} className={checkCls} {...f.register("need")} />{l}</label>
-          ))}
-        </div>
-        {e.need && <span className="mt-1 block text-xs text-destructive">{e.need.message}</span>}
-      </fieldset>
-      <div className="md:col-span-2"><Field label="Additional notes" optional><textarea rows={3} className={inputCls} {...f.register("notes")} /></Field></div>
+      <div className="md:col-span-2"><Field label="Additional notes" optional><textarea rows={4} className={inputCls} {...f.register("notes")} /></Field></div>
       <div className="md:col-span-2"><ConsentBox reg={f.register("consent")} error={e.consent?.message} /></div>
-      <div className="md:col-span-2"><CtaButton type="submit" track="form_submit_click_hotel" disabled={f.formState.isSubmitting}>Submit request</CtaButton></div>
+      <div className="md:col-span-2"><CtaButton type="submit" track="form_submit_click_quote" disabled={f.formState.isSubmitting}>Submit request</CtaButton></div>
     </form>
   );
 }
 
 export function RequestForm() {
-  const [prefill, setPrefill] = useState<Prefill>({});
   const [done, setDone] = useState(false);
 
   useEffect(() => {
-    const h = (ev: Event) => {
-      const d = (ev as CustomEvent<Prefill>).detail ?? {};
-      setDone(false);
-      setPrefill({ ...d });
-    };
+    // "Get a Quotation" buttons fire gp:prefill; show a fresh form if the thank-you card was open.
+    const h = () => setDone(false);
     window.addEventListener("gp:prefill", h);
     return () => window.removeEventListener("gp:prefill", h);
   }, []);
@@ -122,7 +89,7 @@ export function RequestForm() {
             <CtaButton variant="quiet" track="send_another_request" onClick={() => setDone(false)} className="mt-6">Send another request</CtaButton>
           </div>
         ) : (
-          <HotelForm prefill={prefill} onDone={() => setDone(true)} />
+          <QuoteForm onDone={() => setDone(true)} />
         )}
       </div>
     </Section>
