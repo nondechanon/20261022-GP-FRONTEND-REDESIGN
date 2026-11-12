@@ -193,7 +193,7 @@ export function AmenityKits() {
           <article key={k.slug} className="flex flex-col rounded-md border border-border bg-card p-2 sm:p-3 transition-colors duration-300 hover:border-charcoal">
             <ImageSlot caption={`IMAGE: ${k.name} kit`} alt={`GreenPeak Transformation ${k.name.toLowerCase()} kit`} src={k.img} ratio={k.ratio} />
             <div className="flex flex-1 flex-col gap-2 p-1 pt-3 sm:p-2 sm:pt-5">
-              <h3 className="text-lg sm:text-2xl">{k.name} Kit</h3>
+              <h3 className="font-display text-xl font-semibold leading-tight text-balance sm:text-[1.7rem]">{k.name} Kit</h3>
               <p className="text-xs sm:text-sm"><span className="text-muted-foreground">{k.specLabel}: </span>{k.spec}</p>
               <p className="text-xs sm:text-sm"><span className="text-muted-foreground">Packaging: </span>{packaging}</p>
               <div className="mt-auto pt-2">
@@ -270,7 +270,7 @@ export function Slippers() {
               alt={s.imageAlt ?? `GreenPeak Transformation ${s.name.toLowerCase()} slipper`}
             />
             <div className="flex flex-1 flex-col gap-2 p-1 pt-3 sm:p-2 sm:pt-5">
-              <h3 className="text-lg sm:text-2xl">{s.name} Slipper</h3>
+              <h3 className="font-display text-xl font-semibold leading-tight text-balance sm:text-[1.7rem]">{s.name.split("Non-woven").flatMap((part, i) => (i === 0 ? [part] : [<span key={i} className="whitespace-nowrap">Non-woven</span>, part]))} Slipper</h3>
               <p className="text-xs sm:text-sm"><span className="text-muted-foreground">Upper: </span>{s.upper}</p>
               <p className="text-xs sm:text-sm"><span className="text-muted-foreground">Sole: </span>{s.sole}</p>
               <p className="text-xs sm:text-sm"><span className="text-muted-foreground">Packaging: </span>{packaging}</p>
