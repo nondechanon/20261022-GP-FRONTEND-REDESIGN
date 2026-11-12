@@ -57,12 +57,10 @@ function Privacy() {
           <Block n={2} title="What we collect">
             <p>When you submit a quotation request, we collect:</p>
             <ul>
-              <li>Full name</li>
-              <li>Hotel or company name</li>
+              <li>Name</li>
+              <li>Company name</li>
               <li>Email address and phone number</li>
-              <li>Number of rooms (optional)</li>
-              <li>The products and request type you select</li>
-              <li>Any additional notes you write</li>
+              <li>Any additional notes you write (optional)</li>
             </ul>
           </Block>
 
@@ -119,7 +117,7 @@ function Privacy() {
           </Block>
 
           <Block n={8} title="If you don't give us your data">
-            <p>We need your name, contact details and hotel to answer a quotation request. Without them, we cannot prepare a quote.</p>
+            <p>We need your name, company name and contact details to answer a quotation request. Without them, we cannot prepare a quote.</p>
           </Block>
 
           <Block n={9} title="Security">

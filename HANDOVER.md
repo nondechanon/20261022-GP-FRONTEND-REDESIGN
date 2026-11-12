@@ -73,14 +73,14 @@ bun test           # vitest
 8. **CHAONA** — dark teak band, rice-straw brand, spec tiles, disabled "Visit CHAONA" link.
 9. **Sustainability** — Materials / Certifications / Impact columns.
 10. **Why GreenPeak (About)** — 3 differentiators + contact card (Pharunyu, phone, email, LINE).
-11. **Request a quotation** — form: name, hotel, email, phone, rooms (optional), products
+11. **Request a quotation** — form: name, company name, email, phone (all required), additional notes (optional), PDPA consent
     checkboxes (Amenity kits / Slippers / CHAONA), "I need" radio (Quotation / Call back),
     notes, PDPA consent (required). Submits → thank-you state with "Send another request".
 12. **Footer** — company name, Bangkok, email, LINE and Privacy links.
 
 ### Removed by client request (do NOT re-add)
 
-- All **sample requests** (including CHAONA samples) — only **quotation** and **callback** requests exist.
+- All **sample requests** (including CHAONA samples) — only **quotation** requests exist (the "Call back" option was removed too).
 - The **Export** section and any importer/export content.
 - The **founder** quote/photo section, the **FAQ** section, and the proof-fact tiles
   (SKU counts, delivery area, lead time, MOQ). The looping client-logo strip itself was brought
@@ -104,9 +104,9 @@ hex colors or `text-white`/`bg-black` in components**; use the tokens.
 ## 5. Key mechanisms
 
 - **`goToRequest(prefill)`** (shared.tsx): dispatches a `gp:prefill` CustomEvent and
-  smooth-scrolls to `#request`. The form listens, resets the thank-you state, and preselects
-  `need` / `products`. `Prefill = { mode?: "hotel"; need?: "quotation" | "callback";
-  product?: "amenity" | "slippers" | "chaona" }`.
+  smooth-scrolls to `#request`. The form listens and resets the thank-you state. The form no
+  longer has product / request-type fields, so the `Prefill` values (`need`, `product`) are
+  accepted but not used.
 - **`trackEvent(name)`**: console.log stub — swap in a real analytics call here.
 - **`submitLead(payload)`** (bottom.tsx): console.log stub — **the form goes nowhere.**
   This is the main unfinished piece; wire it to email/CRM/backend.

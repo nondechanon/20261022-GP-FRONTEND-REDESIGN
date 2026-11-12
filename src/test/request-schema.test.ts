@@ -1,24 +1,26 @@
 import { describe, expect, it } from "vitest";
-import { hotelSchema } from "@/components/gp/request-schema";
+import { quoteSchema } from "@/components/gp/request-schema";
 
 const request = {
-  fullName: "Test Guest",
-  hotel: "Test Hotel",
+  name: "Test Guest",
+  company: "Test Hotel",
   email: "guest@example.com",
   phone: "0994246141",
-  products: ["amenity", "slippers", "chaona"],
-  need: "quotation",
   consent: true,
 };
 
-describe("Hotel request options", () => {
-  it("rejects all sample requests while allowing quotations", () => {
-    expect(hotelSchema.safeParse({ ...request, need: "sample" }).success).toBe(false);
-    expect(hotelSchema.safeParse(request).success).toBe(true);
+describe("Quotation request", () => {
+  it("accepts name, company name, email and phone, with notes optional", () => {
+    expect(quoteSchema.safeParse(request).success).toBe(true);
+    expect(quoteSchema.safeParse({ ...request, notes: "Need 500 sets for 2027." }).success).toBe(true);
   });
 
-  it("rejects export products while retaining hotel amenities", () => {
-    expect(hotelSchema.safeParse({ ...request, products: ["export"] }).success).toBe(false);
-    expect(hotelSchema.safeParse(request).success).toBe(true);
+  it("requires name, company name, email, phone and consent", () => {
+    for (const key of ["name", "company", "email", "phone", "consent"] as const) {
+      const { [key]: _omitted, ...rest } = request;
+      expect(quoteSchema.safeParse(rest).success, key).toBe(false);
+    }
+    expect(quoteSchema.safeParse({ ...request, email: "not-an-email" }).success).toBe(false);
+    expect(quoteSchema.safeParse({ ...request, consent: false }).success).toBe(false);
   });
 });
