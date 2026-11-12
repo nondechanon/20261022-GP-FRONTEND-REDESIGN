@@ -3,7 +3,7 @@ import aboutImg from "@/assets/gp/about.jpg";
 import iso22000 from "@/assets/gp/certs/iso-22000.png";
 import gmp from "@/assets/gp/certs/gmp.png";
 import haccp from "@/assets/gp/certs/haccp.png";
-import { ImageSlot, Section, SectionTitle } from "./shared";
+import { ImageSlot, Section, SectionTitle, trackEvent } from "./shared";
 
 export function Chaona() {
   return (
@@ -18,8 +18,15 @@ export function Chaona() {
             Crafted from natural rice and plant-based ingredients, CHAONA offers a fully biodegradable, edible alternative to single-use plastics. Designed specifically for the hospitality industry, these straws provide a seamless guest experience while eliminating environmental waste. By turning renewable agricultural resources into eco-friendly dining solutions, CHAONA helps businesses make a tangible shift toward a cleaner, plastic-free future.
           </p>
           <div className="mt-10 flex flex-col items-start gap-4">
-            {/* Enable only after chaonaricestraw.com is upgraded. */}
-            <span aria-disabled="true" className="cursor-not-allowed text-sm text-ivory/60 underline underline-offset-4">Visit CHAONA</span>
+            <a
+              href="https://chaonaricestraw.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => trackEvent("click_visit_chaona")}
+              className="inline-flex min-h-11 items-center text-sm text-ivory underline underline-offset-4 transition-colors hover:text-celadon"
+            >
+              Visit CHAONA
+            </a>
           </div>
         </div>
       </div>
