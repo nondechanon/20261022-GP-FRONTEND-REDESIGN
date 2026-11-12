@@ -1,0 +1,53 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      # bun.lock points at Lovable's private package cache, so install from the public npm registry instead.
+      - run: npm install --legacy-peer-deps --no-package-lock --registry=https://registry.npmjs.org
+      - run: npm test
+      - run: npx vite build --config vite.config.pages.ts
+        env:
+          PAGES_BASE: /${{ github.event.repository.name }}/
+      - name: Fail if any Lovable-hosted asset URL is left in the build
+        run: |
+          if grep -rIl "__l5e" dist/client; then
+            echo "::error::Build still references Lovable-only asset URLs (/__l5e/...). Commit those images into src/assets and import them directly."
+            exit 1
+          fi
+      - name: Add 404 page and disable Jekyll
+        run: |
+          cp dist/client/index.html dist/client/404.html
+          touch dist/client/.nojekyll
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist/client
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

@@ -149,3 +149,9 @@ hex colors or `text-white`/`bg-black` in components**; use the tokens.
 3. Collect the §8 content (company address, registration / VAT number, etc.) and add it where needed.
 4. Add real kit/slipper photos to `src/assets/gp/` and pass them to the `ImageSlot`s.
 5. Run `bun test` before shipping changes.
+
+
+## Deploying to GitHub Pages
+- `.github/workflows/pages.yml` builds a static, prerendered site with `vite.config.pages.ts` (separate from the Lovable `vite.config.ts`, which stays untouched) and publishes `dist/client`.
+- Repo Settings -> Pages -> Source must be **GitHub Actions**. Default URL is `https://<owner>.github.io/<repo>/`; the workflow passes `PAGES_BASE=/<repo>/` so asset and nav links work under that sub-path (the router `basepath` and the header links read `import.meta.env.BASE_URL`, which is `/` on Lovable). For a custom domain, set it in Pages settings and change `PAGES_BASE` to `/` in the workflow. Pages on a private repo needs a paid GitHub plan.
+- The build fails on purpose if any `/__l5e/` (Lovable-hosted) image URL remains. Those `*.asset.json` images only exist on Lovable's servers; commit the real image files and import them directly.

@@ -1,13 +1,13 @@
 import hero from "@/assets/gp/hero.jpg";
-import customizationAsset from "@/assets/gp/customization-logo.png.asset.json";
+import customizationUrl from "@/assets/gp/customization-logo.jpg";
 import logo from "@/assets/gp/logo.png";
 import slipperUltrasonic from "@/assets/gp/slipper-ultrasonic.jpg";
 import slipperNonWoven from "@/assets/gp/slipper-non-woven.jpg";
 import slipperNapCloth from "@/assets/gp/slipper-nap-cloth.jpg";
 import slipperWaffle from "@/assets/gp/slipper-waffle.jpg";
-import dentalKitImg from "@/assets/gp/dental-kit.png.asset.json";
-import shavingKitImg from "@/assets/gp/shaving-kit.png.asset.json";
-import vanityKitImg from "@/assets/gp/vanity-kit.png.asset.json";
+import dentalKitUrl from "@/assets/gp/dental-kit.jpg";
+import shavingKitUrl from "@/assets/gp/shaving-kit.jpg";
+import vanityKitUrl from "@/assets/gp/vanity-kit.jpg";
 import bathHairKitUrl from "@/assets/gp/bath-hair-kit.jpg";
 import orientalResidence from "@/assets/gp/clients/oriental-residence.png";
 import goldenTulip from "@/assets/gp/clients/golden-tulip.png";
@@ -25,12 +25,15 @@ import {
   goToRequest,
 } from "./shared";
 
+// Site root without trailing slash: "" normally, "/<repo>" on GitHub Pages.
+const BASE = import.meta.env.BASE_URL.replace(/\/$/, "");
+
 const NAV = [
-  { label: "Amenity", href: "/#amenities" },
-  { label: "CHAONA", href: "/#chaona" },
-  { label: "Sustainability", href: "/#sustainability" },
-  { label: "About", href: "/#about" },
-  { label: "Contact", href: "/#request" },
+  { label: "Amenity", href: `${BASE}/#amenities` },
+  { label: "CHAONA", href: `${BASE}/#chaona` },
+  { label: "Sustainability", href: `${BASE}/#sustainability` },
+  { label: "About", href: `${BASE}/#about` },
+  { label: "Contact", href: `${BASE}/#request` },
 ];
 
 export function Header() {
@@ -39,7 +42,7 @@ export function Header() {
     <>
       <header className="sticky top-0 z-40 border-b border-border bg-ivory">
         <div className="flex h-16 w-full items-center justify-between gap-4 pl-[max(1rem,env(safe-area-inset-left,0px))] pr-[max(1rem,env(safe-area-inset-right,0px))] md:h-20 md:pl-[max(2rem,env(safe-area-inset-left,0px))] md:pr-[max(2rem,env(safe-area-inset-right,0px))] lg:pl-[max(3rem,env(safe-area-inset-left,0px))] lg:pr-[max(3rem,env(safe-area-inset-right,0px))]">
-          <a href="/" aria-label="GreenPeak Transformation, home" className="inline-flex min-h-11 items-center">
+          <a href={`${BASE}/`} aria-label="GreenPeak Transformation, home" className="inline-flex min-h-11 items-center">
             <img src={logo} alt="GreenPeak Transformation" width={1000} height={162} className="h-7 w-auto md:h-9" />
           </a>
           <nav aria-label="Main" className="hidden lg:block">
@@ -156,7 +159,7 @@ export function AmenityKits() {
     {
       name: "Dental",
       slug: "dental",
-      img: dentalKitImg.url,
+      img: dentalKitUrl,
       ratio: "aspect-square",
       specLabel: "Materials",
       spec: "Bamboo or cornstarch-based handle, soft bristles. Approx. 17.5–18 cm. Custom handle and bristle colors.",
@@ -164,7 +167,7 @@ export function AmenityKits() {
     {
       name: "Shaving",
       slug: "shaving",
-      img: shavingKitImg.url,
+      img: shavingKitUrl,
       ratio: "aspect-square",
       specLabel: "Materials",
       spec: "Wood handle or cornstarch-based handle. Choice of 3 cover styles; custom colors.",
@@ -172,7 +175,7 @@ export function AmenityKits() {
     {
       name: "Vanity",
       slug: "vanity",
-      img: vanityKitImg.url,
+      img: vanityKitUrl,
       ratio: "aspect-square",
       specLabel: "Contents",
       spec: "Wood cotton buds (4 pcs), cotton pads (3 pcs), nail file, sewing kit (6 threads, 2 buttons, needle, pin).",
@@ -312,7 +315,7 @@ export function Customization() {
           </div>
         </div>
         <ImageSlot
-          src={customizationAsset.url}
+          src={customizationUrl}
           ratio="aspect-[4/3]"
           caption="IMAGE: mock-up of a co-branded kit"
           alt="Mock-up of co-branded amenity sachets for shampoo, conditioner, body wash, body lotion and dental kit, each marked Your Logo Here"
