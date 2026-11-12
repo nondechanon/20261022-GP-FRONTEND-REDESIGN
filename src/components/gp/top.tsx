@@ -1,13 +1,13 @@
 import hero from "@/assets/gp/hero.jpg";
-import customizationAsset from "@/assets/gp/customization-logo.png.asset.json";
+import customizationUrl from "@/assets/gp/customization-logo.jpg";
 import logo from "@/assets/gp/logo.png";
 import slipperUltrasonic from "@/assets/gp/slipper-ultrasonic.jpg";
 import slipperNonWoven from "@/assets/gp/slipper-non-woven.jpg";
 import slipperNapCloth from "@/assets/gp/slipper-nap-cloth.jpg";
 import slipperWaffle from "@/assets/gp/slipper-waffle.jpg";
-import dentalKitImg from "@/assets/gp/dental-kit.png.asset.json";
-import shavingKitImg from "@/assets/gp/shaving-kit.png.asset.json";
-import vanityKitImg from "@/assets/gp/vanity-kit.png.asset.json";
+import dentalKitUrl from "@/assets/gp/dental-kit.jpg";
+import shavingKitUrl from "@/assets/gp/shaving-kit.jpg";
+import vanityKitUrl from "@/assets/gp/vanity-kit.jpg";
 import bathHairKitUrl from "@/assets/gp/bath-hair-kit.jpg";
 import orientalResidence from "@/assets/gp/clients/oriental-residence.png";
 import goldenTulip from "@/assets/gp/clients/golden-tulip.png";
@@ -156,7 +156,7 @@ export function AmenityKits() {
     {
       name: "Dental",
       slug: "dental",
-      img: dentalKitImg.url,
+      img: dentalKitUrl,
       ratio: "aspect-square",
       specLabel: "Materials",
       spec: "Bamboo or cornstarch-based handle, soft bristles. Approx. 17.5–18 cm. Custom handle and bristle colors.",
@@ -164,7 +164,7 @@ export function AmenityKits() {
     {
       name: "Shaving",
       slug: "shaving",
-      img: shavingKitImg.url,
+      img: shavingKitUrl,
       ratio: "aspect-square",
       specLabel: "Materials",
       spec: "Wood handle or cornstarch-based handle. Choice of 3 cover styles; custom colors.",
@@ -172,7 +172,7 @@ export function AmenityKits() {
     {
       name: "Vanity",
       slug: "vanity",
-      img: vanityKitImg.url,
+      img: vanityKitUrl,
       ratio: "aspect-square",
       specLabel: "Contents",
       spec: "Wood cotton buds (4 pcs), cotton pads (3 pcs), nail file, sewing kit (6 threads, 2 buttons, needle, pin).",
@@ -312,7 +312,7 @@ export function Customization() {
           </div>
         </div>
         <ImageSlot
-          src={customizationAsset.url}
+          src={customizationUrl}
           ratio="aspect-[4/3]"
           caption="IMAGE: mock-up of a co-branded kit"
           alt="Mock-up of co-branded amenity sachets for shampoo, conditioner, body wash, body lotion and dental kit, each marked Your Logo Here"
