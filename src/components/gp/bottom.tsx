@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "@tanstack/react-router";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { hotelSchema } from "./request-schema";
@@ -36,7 +37,7 @@ function ConsentBox({ reg, error }: { reg: object; error?: string | undefined })
     <div>
       <label className="flex min-h-11 items-start gap-3 py-2 text-sm lg:min-h-0 lg:py-0">
         <input type="checkbox" {...reg} className={`${checkCls} mt-0.5 lg:mt-1`} />
-        <span>I consent to the collection and use of my personal data as described in the privacy notice (Thai PDPA).</span>
+        <span>I consent to the collection and use of my personal data as described in the <Link to="/privacy" target="_blank" className="underline underline-offset-4">Privacy Notice</Link>.</span>
       </label>
       {error && <span className="mt-1 block text-xs text-destructive">{error}</span>}
     </div>
@@ -149,7 +150,7 @@ export function Footer() {
           <p className={footerLabel}>Links</p>
           <ul className="text-sm">
             <li><a href={LINE_URL} target="_blank" rel="noreferrer" onClick={() => trackEvent("footer_line")} className={footerLink}>LINE</a></li>
-            <li><a href="#" className={footerLink}>Privacy notice (Thai PDPA)</a></li>
+            <li><Link to="/privacy" className={footerLink}>Privacy Notice</Link></li>
           </ul>
         </div>
       </div>
