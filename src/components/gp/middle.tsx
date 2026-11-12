@@ -86,8 +86,8 @@ export function WhyGreenpeak() {
         <ImageSlot
           src={aboutImg}
           alt="Cartons loaded on a delivery truck and pallet at a warehouse loading dock"
-          ratio="aspect-[4/5]"
-          className="mx-auto w-full max-w-md lg:sticky lg:top-28 lg:max-w-none [&_img]:object-[50%_74%]"
+          ratio="aspect-[9/16]"
+          className="mx-auto w-full sm:max-w-sm lg:sticky lg:top-28 lg:max-w-none"
         />
       </div>
     </Section>
