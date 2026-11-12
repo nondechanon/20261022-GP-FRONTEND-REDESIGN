@@ -76,7 +76,7 @@ bun test           # vitest
 11. **Request a quotation** — form: name, hotel, email, phone, rooms (optional), products
     checkboxes (Amenity kits / Slippers / CHAONA), "I need" radio (Quotation / Call back),
     notes, PDPA consent (required). Submits → thank-you state with "Send another request".
-12. **Footer** — company name, Bangkok, email, LINE / LinkedIn / GeoAsia / Privacy links.
+12. **Footer** — company name, Bangkok, email, LINE and Privacy links.
 
 ### Removed by client request (do NOT re-add)
 
@@ -119,7 +119,6 @@ hex colors or `text-white`/`bg-black` in components**; use the tokens.
 - Amenities catalog: https://drive.google.com/file/d/1z3HqGJmn3R5_JX8LVh-FIPOw_mrSdHRU/view?usp=sharing
 - Slipper catalog: https://drive.google.com/file/d/1-cNsGqdac7Sq9TT7dLEA_cG43ZcdMwjV/view?usp=sharing
 - WhatsApp: https://wa.me/66994246141
-- GeoAsia Initiative: https://greenpeaktransform.com/partnership/
 
 ## 7. Conventions (from AGENTS.md + project rules)
 

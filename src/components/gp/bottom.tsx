@@ -136,7 +136,6 @@ export function Footer() {
     <footer className="bg-charcoal py-16 text-ivory lg:pb-12">
       <div className="container-gp grid items-start gap-x-12 gap-y-10 md:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr]">
         <div className="md:col-span-2 lg:col-span-1">
-          <p className={footerLabel}>Company</p>
           <p className="font-display text-3xl font-semibold leading-tight">GreenPeak Transformation <span className="whitespace-nowrap">Co., Ltd.</span></p>
         </div>
         <div>
@@ -150,7 +149,6 @@ export function Footer() {
           <p className={footerLabel}>Links</p>
           <ul className="text-sm">
             <li><a href={LINE_URL} target="_blank" rel="noreferrer" onClick={() => trackEvent("footer_line")} className={footerLink}>LINE</a></li>
-            <li><a href="https://greenpeaktransform.com/partnership/" target="_blank" rel="noreferrer" className={footerLink}>GeoAsia Initiative</a></li>
             <li><a href="#" className={footerLink}>Privacy notice (Thai PDPA)</a></li>
           </ul>
         </div>
