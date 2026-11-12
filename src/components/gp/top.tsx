@@ -124,7 +124,7 @@ export function ProofStrip() {
   const half = [...CLIENTS, ...CLIENTS];
   return (
     <section aria-label="Hotel clients" className="border-b border-border py-12 md:py-16">
-      <h2 className="mb-8 text-center font-heading text-2xl font-bold uppercase tracking-[0.18em] text-charcoal md:mb-12 md:text-3xl">
+      <h2 className="mb-8 text-center text-3xl text-charcoal md:mb-12 md:text-5xl">
         Our clients
       </h2>
       <div className="marquee">
